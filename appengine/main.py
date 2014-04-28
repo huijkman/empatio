@@ -38,8 +38,16 @@ class SubPage(webapp2.RequestHandler):
         template = jinja_environment.get_template('subpage.html')
         self.response.out.write(template.render(template_values))
 
+class BumperHandler(webapp2.RequestHandler):
+    def get(self):
+        template_values = {}
+
+        template = jinja_environment.get_template('bumper.html')
+        self.response.out.write(template.render(template_values))
+
 app = webapp2.WSGIApplication([
-    ('/', MainPage),
+    ('/', BumperHandler),
+    ('/index', MainPage),
     ('/sub', SubPage)
 ], debug=True)
 

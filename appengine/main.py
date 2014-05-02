@@ -45,8 +45,17 @@ class BumperHandler(webapp2.RequestHandler):
         template = jinja_environment.get_template('bumper.html')
         self.response.out.write(template.render(template_values))
 
+class DoHandler(webapp2.RequestHandler):
+    def get(self):
+        template_values = {}
+
+        template = jinja_environment.get_template('empatio.html')
+        self.response.out.write(template.render(template_values))
+
+
 app = webapp2.WSGIApplication([
     ('/', BumperHandler),
+    ('/do', DoHandler),
     ('/index', MainPage),
     ('/sub', SubPage)
 ], debug=True)

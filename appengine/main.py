@@ -14,49 +14,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-import os
 import webapp2
+from google.appengine.ext.webapp import template
+import os
 
-import jinja2
-
-password = 'wachtwoord'
-
-jinja_environment = jinja2.Environment(autoescape=True,
-    loader=jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), 'views')))
-
-class MainPage(webapp2.RequestHandler):
+class MainHandler(webapp2.RequestHandler):
     def get(self):
-        template_values = {}
-
-        template = jinja_environment.get_template('index.html')
-        self.response.out.write(template.render(template_values))
-
-class SubPage(webapp2.RequestHandler):
-    def get(self):
-        template_values = {}
-
-        template = jinja_environment.get_template('subpage.html')
-        self.response.out.write(template.render(template_values))
+        path = os.path.join(os.path.dirname(__file__), 'empatio-site/index.html')
+        template_values = {
+        }
+        self.response.out.write(template.render(path, template_values))
 
 class BumperHandler(webapp2.RequestHandler):
     def get(self):
-        template_values = {}
-
-        template = jinja_environment.get_template('bumper.html')
-        self.response.out.write(template.render(template_values))
-
-class DoHandler(webapp2.RequestHandler):
-    def get(self):
-        template_values = {}
-
-        template = jinja_environment.get_template('empatio.html')
-        self.response.out.write(template.render(template_values))
-
+        path = os.path.join(os.path.dirname(__file__), 'empatio-site/bumper.html')
+        template_values = {
+        }
+        self.response.out.write(template.render(path, template_values))
 
 app = webapp2.WSGIApplication([
-    ('/', BumperHandler),
-    ('/do', DoHandler),
-    ('/index', MainPage),
-    ('/sub', SubPage)
+    ('/dev', MainHandler),
+    ('/', BumperHandler)
 ], debug=True)
-

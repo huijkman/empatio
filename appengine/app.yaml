@@ -7,22 +7,32 @@ threadsafe: true
 handlers:
 - url: /favicon\.ico
   static_files: favicon.ico
-  upload: favicon\.ico
+  upload: empatio-site/static/images/favicon\.ico
 
 - url: /static/css
-  static_dir: static/css
+  static_dir: empatio-site/static/css
 
 - url: /static/fonts
-  static_dir: static/fonts
+  static_dir: empatio-site/static/fonts
 
-- url: /static/img
-  static_dir: static/img
+- url: /static/images
+  static_dir: empatio-site/static/images
 
 - url: /static/js
-  static_dir: static/js
+  static_dir: empatio-site/static/js
+
+- url: /static/vendors
+  static_dir: empatio-site/static/vendors
+
+- url: /media
+  static_dir: empatio-site/media
+
+- url: /people
+  static_dir: empatio-site/people
 
 - url: /.*
   script: main.app
+
 
 libraries:
 - name: webapp2

@@ -1,4 +1,4 @@
-// ========= MIXINS 
+// ========= MIXINS
 @mixin translate($x, $y){
 	-ms-transform: translate($x,$y); /* IE 9 */
  	-webkit-transform: translate($x,$y); /* Chrome, Safari, Opera */
@@ -10,6 +10,12 @@
   -moz-transition: $params;
   -o-transition: $params;
   transition: $params;
+}
+
+@mixin round-btn($size){
+	width: $size;
+	height: $size;
+	border-radius: $size;
 }
 
 // =========
@@ -101,7 +107,7 @@ header {
 			top:100%;
 			margin-top:-3.75em;
 		}
-		
+
   }
   &.selected-2 {
 		li#nav-1 {
@@ -188,6 +194,35 @@ header {
 			height:200px;
 			border-radius:200px;
 			background:red;
+		}
+	}
+	.player {
+		position: absolute;
+		top: 50px;
+		width: 50vw;
+		left: 10px;
+		.button-play-pause {
+			display: inline-block;
+			@include round-btn(50px);
+			-webkit-appearance: none;
+			border: none;
+			background: #F00;
+			cursor: pointer;
+			&:after {
+				content: '►';
+				font-size: 30px;
+				text-indent: 5px;
+				text-align: center;
+				display: inline-block;
+				width: 100%;
+			}
+		}
+		&.playing .button-play-pause:after {
+			content: '◼︎';
+			text-indent: 0;
+			font-size: 35px;
+			vertical-align: bottom;
+			margin-top: 2px;
 		}
 	}
 }

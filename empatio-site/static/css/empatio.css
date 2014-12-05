@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box; }
 
@@ -154,9 +155,38 @@ header {
       height: 200px;
       border-radius: 200px;
       background: red; }
+  #people .player {
+    position: absolute;
+    top: 50px;
+    width: 50vw;
+    left: 10px; }
+    #people .player .button-play-pause {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      border-radius: 50px;
+      -webkit-appearance: none;
+      border: none;
+      background: #F00;
+      cursor: pointer; }
+      #people .player .button-play-pause:after {
+        content: '►';
+        font-size: 30px;
+        text-indent: 5px;
+        text-align: center;
+        display: inline-block;
+        width: 100%; }
+    #people .player.playing .button-play-pause:after {
+      content: '◼︎';
+      text-indent: 0;
+      font-size: 35px;
+      vertical-align: bottom;
+      margin-top: 2px; }
 
 #interests {
   position: relative;
   background: #fff;
   color: #000;
   text-align: center; }
+
+/*# sourceMappingURL=empatio.css.map */

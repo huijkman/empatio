@@ -1,135 +1,13 @@
-// ========= MIXINS
-@mixin translate($x, $y){
-	-ms-transform: translate($x,$y); /* IE 9 */
- 	-webkit-transform: translate($x,$y); /* Chrome, Safari, Opera */
-  transform: translate($x,$y);
-}
-
-@mixin transition($params) {
-	-webkit-transition: $params;
-  -moz-transition: $params;
-  -o-transition: $params;
-  transition: $params;
-}
-
-@mixin round-btn($size){
-	width: $size;
-	height: $size;
-	border-radius: $size;
-}
-
-// =========
-
-* {
-	box-sizing:border-box;
-}
-
-html,
-body {
-	margin:0;
-	padding:0;
-	width:100%;
-	height:100%;
-}
-body {
-	font-family: "ff-tisa-sans-web-pro",sans-serif;
-	font-weight:normal;
-	color:#222;
-}
-h1 {
-	font-family: "quatro-slab",serif;
-	font-weight:700;
-	font-size:2.4em;
-}
-h2 {
-	font-family: "quatro-slab",serif;
-	font-weight:700;
-	font-size:2.0em;
-}
-h3 {
-	font-family: "quatro-slab",serif;
-	font-weight:400;
-	font-size:1.8em;
-}
-h4 {
-	font-family: "quatro-slab",serif;
-	font-weight:400;
-	font-size:1.4em;
-}
-
-.abs-centered {
-	position:absolute;
-	z-index:1;
-	top:50%;
-	left:50%;
-	@include translate(-50%, -50%);
-}
-
-.horizontal-scroll {
-	overflow-y: hidden;
-	overflow-x: auto;
-	white-space: nowrap;
-	vertical-align: top;
-	.scroll-item {
-		position: relative;
-		display: inline-block;
-		white-space: normal;
-		vertical-align: top;
-	}
-}
+@import 'utils';
+@import 'global';
+@import 'nav';
+@import 'player';
 
 header {
 	position:fixed;
 	z-index:999;
 	height:100%;
 	left:50%;
-}
-
-#nav {
-	list-style:none;
-	li {
-		position:absolute;
-		left:50%;
-		opacity:1;
-		pointer-events:auto;
-		@include translate(-50%,0);
-		margin:0;
-		background-color:rgba(255,255,255,0.5);
-		@include transition(all 0.5s ease);
-		&#nav-0 {
-			top:0.5em;
-		}
-		&#nav-1 {
-			top:100%;
-			margin-top:-7.5em;
-		}
-		&#nav-2 {
-			top:100%;
-			margin-top:-3.75em;
-		}
-
-  }
-  &.selected-2 {
-		li#nav-1 {
-			top:4.25em;
-			margin-top:0;
-		}
-	}
-
-	.current {
-		//opacity:0;
-		//pointer-events:none;
-		display:none;
-	}
-	a {
-		display:block;
-		white-space: nowrap;
-		color:#222;
-		min-width:15em;
-		padding:1em;
-		text-align:center;
-		border:1px solid #222;
-	}
 }
 
 #start {
@@ -194,35 +72,6 @@ header {
 			height:200px;
 			border-radius:200px;
 			background:red;
-		}
-	}
-	.player {
-		position: absolute;
-		top: 50px;
-		width: 50vw;
-		left: 10px;
-		.button-play-pause {
-			display: inline-block;
-			@include round-btn(50px);
-			-webkit-appearance: none;
-			border: none;
-			background: #F00;
-			cursor: pointer;
-			&:after {
-				content: '►';
-				font-size: 30px;
-				text-indent: 5px;
-				text-align: center;
-				display: inline-block;
-				width: 100%;
-			}
-		}
-		&.playing .button-play-pause:after {
-			content: '◼︎';
-			text-indent: 0;
-			font-size: 35px;
-			vertical-align: bottom;
-			margin-top: 2px;
 		}
 	}
 }

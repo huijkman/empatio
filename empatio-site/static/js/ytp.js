@@ -33,7 +33,6 @@ var CustomYtp = {
   },
   // get the instances of the player div to populate
   ytGetInstances: function() {
-    var elementArray = [];
     var matchedArray = [];
     matchedArray = document.body.querySelectorAll('.ytplayerbox');
     return matchedArray;
@@ -354,11 +353,15 @@ var CustomYtp = {
 
   ytplay: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
+    var parent = ytp.parentNode;
+    var caption = parent.nextElementSibling;
     if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
       if (ytp.getPlayerState() == "1") {
         ytp.pauseVideo();
+        caption.classList.add('hidden');
       } else {
         ytp.playVideo();
+        caption.classList.remove('hidden');
       }
     }
   },
@@ -368,6 +371,7 @@ var CustomYtp = {
     if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
       ytp.pauseVideo();
       ytp.seekTo("0");
+      ytp.parentNode.nextElementSibling.classList.add('hidden');
     }
   },
 

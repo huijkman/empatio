@@ -5,7 +5,6 @@ $(function(){
 });
 
 window.onYouTubePlayerReady = function (playerId) {
-  console.log(playerId);
   CustomYtp.ytplayer.push(playerId);
 }
 

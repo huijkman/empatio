@@ -81,6 +81,7 @@ var CustomYtp = {
     }
     return true;
   },
+
   // Rendering functions
   ytPlayerBoxDraw: function(aspect, ytpbox, pid) {
     var width = "640px";
@@ -235,19 +236,19 @@ var CustomYtp = {
 
   updateButtonState: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(CustomYtp.id)) {
+    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
       var mutebut = document.getElementById("ytmutebut" + ytpid);
       var playbut = document.getElementById("ytplaybut" + ytpid);
-      if (CustomYtp.isMuted()) {
-        mutebut.firstChild.nodeValue = "Unmute";
+      if (ytp.isMuted()) {
+        mutebut.innerHTML = "Unmute";
       } else {
-        mutebut.firstChild.nodeValue = "Mute";
+        mutebut.innerHTML = "Mute";
       }
-      if (CustomYtp.getPlayerState() == 1) {
-        playbut.firstChild.nodeValue = "Pause"
+      if (ytp.getPlayerState() == 1) {
+        playbut.innerHTML = "Pause"
       }
-      if (CustomYtp.getPlayerState() == 2) {
-        playbut.firstChild.nodeValue = "Play"
+      if (ytp.getPlayerState() == 2) {
+        playbut.innerHTML = "Play"
       }
     }
   },
@@ -264,7 +265,6 @@ var CustomYtp = {
 
   updateTime: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    console.log(CustomYtp.ytplayer, ytp.id);
     if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
       var timespan = document.getElementById("ytplayertime" + ytpid);
       var timeval = document.createTextNode(CustomYtp.prepTime(Math.round(ytp.getCurrentTime())) + " of " + CustomYtp.prepTime(Math.round(ytp.getDuration())));
@@ -279,12 +279,12 @@ var CustomYtp = {
   ytLoopInterval: [],
   ytloop: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    if (new RegExp('^(' + ytplayer.join('|') + ')$').test(ytp.id)) {
+    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
       var loopbut = document.getElementById("ytloopbut" + ytpid);
       if (loopbut.firstChild.nodeValue == "Loop") {
         loopbut.firstChild.nodeValue = "UnLoop";
         CustomYtp.ytLoopInterval[ytpid] = window.setInterval(function() {
-          CustomYtp.playVideo();
+          ytp.playVideo();
         }, 2000);
       } else {
         loopbut.firstChild.nodeValue = "Loop";
@@ -295,8 +295,8 @@ var CustomYtp = {
 
   ytmute: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    if (new RegExp('^(' + ytplayer.join('|') + ')$').test(ytp.id)) {
-      if (CustomYtp.isMuted()) {
+    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
+      if (ytp.isMuted()) {
         ytp.unMute();
       } else {
         ytp.mute();
@@ -306,8 +306,8 @@ var CustomYtp = {
 
   ytvolup: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    if (new RegExp('^(' + ytplayer.join('|') + ')$').test(ytp.id)) {
-      var vol = CustomYtp.getVolume();
+    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
+      var vol = ytp.getVolume();
       var nvol = "0";
       if (vol >= 0) {
         nvol = "20"
@@ -330,8 +330,8 @@ var CustomYtp = {
 
   ytvoldown: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    if (new RegExp('^(' + ytplayer.join('|') + ')$').test(ytp.id)) {
-      var vol = CustomYtp.getVolume();
+    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
+      var vol = ytp.getVolume();
       var nvol = "100";
       if (vol <= 100) {
         nvol = "80"
@@ -354,8 +354,8 @@ var CustomYtp = {
 
   ytplay: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    if (new RegExp('^(' + ytplayer.join('|') + ')$').test(ytp.id)) {
-      if (CustomYtp.getPlayerState() == "1") {
+    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
+      if (ytp.getPlayerState() == "1") {
         ytp.pauseVideo();
       } else {
         ytp.playVideo();
@@ -365,7 +365,7 @@ var CustomYtp = {
 
   ytstop: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    if (new RegExp('^(' + ytplayer.join('|') + ')$').test(ytp.id)) {
+    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
       ytp.pauseVideo();
       ytp.seekTo("0");
     }
@@ -373,7 +373,7 @@ var CustomYtp = {
 
   ytforward: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    if (new RegExp('^(' + ytplayer.join('|') + ')$').test(ytp.id)) {
+    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
       var dur = ytp.getDuration();
       if (dur > 0) {
         var nt = Math.floor(dur * .2) + ytp.getCurrentTime();
@@ -388,7 +388,7 @@ var CustomYtp = {
 
   ytback: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    if (new RegExp('^(' + ytplayer.join('|') + ')$').test(ytp.id)) {
+    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
       var dur = ytp.getDuration();
       if (dur > 0) {
         var nt = ytp.getCurrentTime() - Math.floor(dur * .2);
@@ -403,7 +403,7 @@ var CustomYtp = {
 
   ytLoadNewVideo: function (ytpid, url, titleval) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    if (new RegExp('^(' + ytplayer.join('|') + ')$').test(ytp.id)) {
+    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
       ytp.loadVideoById(url, 0);
       var titlenode = document.getElementById("ytvidtitle" + ytpid);
       if (titlenode.firstChild) {

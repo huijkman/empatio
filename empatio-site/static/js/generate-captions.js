@@ -29,8 +29,10 @@ function MediaPlayer(type){
 
 $(function(){
   var audio = new MediaPlayer('audio');
-  audio.init();
-  audio.open('https://drive.google.com/uc?id=0B0B0kv_R-fDsYXlzM1pOaDZVWUU&authuser=0&export=download');
+  if(document.body.querySelector('#people').querySelector('.player')) {
+    audio.init();
+    audio.open('https://drive.google.com/uc?id=0B0B0kv_R-fDsYXlzM1pOaDZVWUU&authuser=0&export=download');
+  }
 });
 
 //recognize the output with speech API

@@ -9,7 +9,7 @@ body {
 }
 body {
     font-family: "brandon-grotesque",sans-serif;
-    font-weight:100;
+    font-weight:300;
     color:#fff;
     background:#000 url(/static/images/bg-main.jpg) 50% 50% no-repeat;
     background-size:cover;

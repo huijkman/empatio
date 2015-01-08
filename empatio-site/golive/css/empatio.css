@@ -3,32 +3,107 @@
 }
 html,
 body {
+    margin:0;
+    padding:0;
 	background-color:#000;
 }
 body {
-    font-family: "ff-tisa-sans-web-pro",sans-serif;
-    font-weight:normal;
+    font-family: "brandon-grotesque",sans-serif;
+    font-weight:100;
+    color:#fff;
+    background:#000 url(/static/images/bg-main.jpg) 50% 50% no-repeat;
+    background-size:cover;
+}
+.font-default {
+    font-family: "brandon-grotesque",sans-serif;
+}
+.font-special {
+    font-family: "corner-store",serif;
+}
+.lang-switch {
+    position:absolute;
+    top:1em;
+    right:1em;
     color:#fff;
 }
 h1 {
-    font-family: "quatro-slab",serif;
-    font-weight:700;
+    font-family: "corner-store",serif;
+    font-weight:normal;
     font-size:2.4em;
 }
 h2 {
-    font-family: "quatro-slab",serif;
-    font-weight:700;
+    font-family: "corner-store",serif;
+    font-weight:normal;
     font-size:2.0em;
 }
 h3 {
-    font-family: "quatro-slab",serif;
-    font-weight:400;
+    font-family: "corner-store",serif;
+    font-weight:normal;
     font-size:1.8em;
 }
 h4 {
-    font-family: "quatro-slab",serif;
-    font-weight:400;
+    font-family: "corner-store",serif;
+    font-weight:normal;
     font-size:1.4em;
+}
+.centered {
+    text-align:center;
+}
+.centered p {
+    max-width:960px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:0 20px;
+    font-size:1.2em;
+}
+.humans {
+    width:100%;
+    text-align:center;
+    vertical-align:top;
+}
+.human {
+    position:relative;
+    display:inline-block;
+    margin:30px 5%;
+    width:30%;
+    min-width:280px;
+    cursor:pointer;
+}
+.human * {
+    transition: all .3s ease-in-out;
+}
+.human a {
+    color:#fff;
+    font-family: 
+    font-size:2em;
+    color: #fff;
+    text-decoration:none;
+}
+h2 .small {
+    display:block;
+    font-family: "brandon-grotesque",sans-serif;
+    font-size:60%;
+    font-weight: 100;
+}
+.human img {
+    width:100%;
+    border-radius:50%;
+    box-shadow: 2px 2px 4px 2px rgba(0,0,0,0.5);
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+.human:hover img {
+    /*-webkit-filter: grayscale(0%);
+    filter: grayscale(0%);*/
+    transform:scale(1.01);
+    box-shadow: 2px 2px 10px 5px rgba(0,0,0,0.5);
+}
+.human h2 {
+    margin:0 0 1em 0;
+}
+
+footer {
+    padding-bottom:40px;
 }
 .video-container {
     position: relative;
@@ -45,7 +120,7 @@ h4 {
     width: 100%;
     height: 100%;
 }
-.row-full {
+/*.row-full {
     width:100%;
     vertical-align:top;
     text-align:center;
@@ -54,4 +129,4 @@ h4 {
     width:49.5%;
     min-width:320px;
     display:inline-block;
-}
+}*/

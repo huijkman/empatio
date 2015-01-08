@@ -27,20 +27,23 @@
       <a href="/nl" lang="nl" class="lang-switch">Nederlands</a>
       <h1 class="decorated"><span class="decorated-content">Accessibility</span></h1>
       <p>
-        What is it like to live with a handicap? What is it like to be unable to use an app or website? To answer these questions I have started with creating short movies about people. I want to know what it is like and I want to show it to you. Hopefully in this way you will, like me, gain a better understanding and it might help you creating better software that can be used by everyone. Because accessibility is about...
+        What is it like to live with a handicap? What is it like to be unable to use an app or website? To answer these questions I have started with creating short movies about people. I want to know what it is like and I want to show it to you. Hopefully in this way you will, like me, gain a better understanding and it might help you creating better software that can be used by everyone.
       </p>
     </header>
     <section class="centered">
       <h1 class="decorated"><span class="decorated-content">People</span></h1>
-
       <div class="humans">
         <figure class="human">
-          <img src="/static/images/tim-intro.jpg" alt="A portrait of Tim" />
-          <figcaption><h2><a href="">Tim <span class="small">is colorblind</span></a></h2></figcaption>
+          <a href="">
+            <img src="/static/images/tim-intro.jpg" alt="A portrait of Tim" />
+            <figcaption><h2>Tim <span class="small">is colorblind</span></h2></figcaption>
+          </a>
         </figure>
         <figure class="human">
-          <img src="/static/images/arend-intro.jpg" alt="A portrait of Arend" />
-          <figcaption><h2><a href="">Arend <span class="small">is blind</span></a></h2></figcaption>
+          <a href="">
+            <img src="/static/images/arend-intro.jpg" alt="A portrait of Arend" />
+            <figcaption><h2>Arend <span class="small">is blind</span></h2></figcaption>
+          </a>
         </figure>
       </div>
       
@@ -51,5 +54,24 @@
         Empat.io has only just begun. I want to create much more movies and add lots of helpfull information. Therefore I need help. I need people who want to tell their story so I can show it here. And I want to know what you think. All thoughts and suggestions are welcome. Or maybe you like to help in an other way. Please let me know at: johan@q42.nl or [twitter]
       </p>
     </footer>
+
+    <div class="modalscreen"></div>
+
+    <script>
+      var humans = document.querySelectorAll(".human"); 
+
+      Array.prototype.forEach.call(humans, function(el, i){
+        el.addEventListener('click', function(evt){
+          evt.preventDefault();
+          document.querySelector(".modalscreen").classList.add('active');
+        });
+      });
+
+      document.querySelector(".modalscreen").addEventListener('click', function(evt){
+        evt.target.classList.remove('active');
+      });
+      
+    </script>
+
   </body>
 </html>

@@ -8,6 +8,7 @@ body {
 	background-color:#000;
 }
 body {
+    position:relative;
     font-family: "brandon-grotesque",sans-serif;
     font-weight:300;
     color:#fff;
@@ -22,6 +23,7 @@ body {
 }
 .lang-switch {
     position:absolute;
+    transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     z-index:2;
     top:1em;
     right:1em;
@@ -32,6 +34,12 @@ body {
     opacity:0.8;
     padding:0.2em 0.5em;
     text-decoration:none;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+.lang-switch:hover,
+.lang-switch:focus {
+    transform:scale(1.06) rotate(-0.1deg);
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
 }
 h1 {
     font-family: "lust-script-display",serif;
@@ -84,7 +92,18 @@ h4 {
     cursor:pointer;
 }
 .human * {
-    transition: all .3s ease-in-out;
+    transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+h2 .small {
+    display:block;
+    font-family: "brandon-grotesque",sans-serif;
+    font-size:60%;
+    font-weight: 300;
+}
+.human img {
+    width:100%;
+    border-radius:50%;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 .human a {
     color:#fff;
@@ -93,24 +112,10 @@ h4 {
     color: #fff;
     text-decoration:none;
 }
-h2 .small {
-    display:block;
-    font-family: "brandon-grotesque",sans-serif;
-    font-size:60%;
-    font-weight: 100;
-}
-.human img {
-    width:100%;
-    border-radius:50%;
-    box-shadow: 2px 2px 4px 2px rgba(0,0,0,0.5);
-    /*-webkit-filter: grayscale(100%);
-    filter: grayscale(100%);*/
-}
-.human:hover img {
-    /*-webkit-filter: grayscale(0%);
-    filter: grayscale(0%);*/
-    transform:scale(1.02) rotate(-0.1deg);
-    box-shadow: 4px 4px 8px 4px rgba(0,0,0,0.3);
+.human a:hover img,
+.human a:focus img {
+    transform:scale(1.05) rotate(-0.1deg);
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2)
 }
 .human h2 {
     margin:0.5em 0 0 0;
@@ -129,6 +134,26 @@ footer {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
 
 }
+.modalscreen {
+    /*transition: all 0.3s ease-in-out;*/
+    position:absolute;
+    z-index:8;
+    top:50%;
+    bottom:50%;
+    left:50%;
+    right:50%;
+    background:#000;
+    opacity:0;
+}
+.modalscreen.active {
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    opacity:0.8;
+}
+
+
 .video-container {
     position: relative;
     padding-bottom: 56.25%;

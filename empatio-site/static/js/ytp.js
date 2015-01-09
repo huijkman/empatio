@@ -98,20 +98,20 @@ var CustomYtp = {
       ytpbox.innerHTML = "<div class=\"video-container\"><div id=\"ytapiplayer" + pid + "\">" +
         "You need Flash player 8+ and JavaScript enabled to view this video." +
         "<\/div><\/div>" +
-        "<div class=\"ytcontrols\">" +
-        "<h3 class=\"semantic\">Player Controls<\/h3>" +
+        "<div class=\"ytcontrols group\">" +
+        "<h3 class=\"semantic\">Acessible Player Controls<\/h3>" +
         "<ul class=\"ytplayerbuttons\">" +
-        "<li><button type=\"button\" class=\"button-play-pause\" id=\"ytplaybut" + pid + "\">Play<\/button><\/li>" +
-        "<li><button type=\"button\" class=\"button-forward\" id=\"ytforwardbut" + pid + "\">Forward 20%<\/button><\/li>" +
-        "<li><button type=\"button\" class=\"button-back\" id=\"ytbackbut" + pid + "\">Back 20%<\/button><\/li>" +
-        "<li><button type=\"button\" class=\"button-stop\" id=\"ytstopbut" + pid + "\">Stop<\/button><\/li>" +
-        "<li><button type=\"button\" class=\"button-volume-up\" id=\"ytvolupbut" + pid + "\">Volume Up<\/button><\/li>" +
-        "<li><button type=\"button\" class=\"button-volume-down\" id=\"ytvoldownbut" + pid + "\">Volume Down<\/button><\/li>" +
-        "<li><button type=\"button\" class=\"button-mute\" id=\"ytmutebut" + pid + "\">Mute<\/button><\/li>" +
+        "<li><button type=\"button\" class=\"icon-btn button-play-pause\" id=\"ytplaybut" + pid + "\">Play<\/button><\/li>" +
+        "<li><button type=\"button\" class=\"icon-btn button-forward\" id=\"ytforwardbut" + pid + "\">Forward 20%<\/button><\/li>" +
+        "<li><button type=\"button\" class=\"icon-btn button-back\" id=\"ytbackbut" + pid + "\">Back 20%<\/button><\/li>" +
+        "<li><button type=\"button\" class=\"icon-btn button-stop\" id=\"ytstopbut" + pid + "\">Stop<\/button><\/li>" +
+        "<li><button type=\"button\" class=\"icon-btn button-volume-up\" id=\"ytvolupbut" + pid + "\">Volume Up<\/button><\/li>" +
+        "<li><button type=\"button\" class=\"icon-btn button-volume-down\" id=\"ytvoldownbut" + pid + "\">Volume Down<\/button><\/li>" +
+        "<li><button type=\"button\" class=\"icon-btn button-mute\" id=\"ytmutebut" + pid + "\">Mute<\/button><\/li>" +
         //"<li><button type=\"button\" class=\"button-loop\" id=\"ytloopbut" + pid + "\">Loop<\/button><\/li>" +
         "<\/ul>" +
-        "<h4>Currently Playing: <span id=\"ytvidtitle" + pid + "\"><\/span><\/h4>" +
-        "<h4>Time: <span id=\"ytplayertime" + pid + "\"><\/span><\/h4>" +
+        "<h4 class=\"pull-left\">Currently Playing: <span id=\"ytvidtitle" + pid + "\"><\/span><\/h4>" +
+        "<h4 class=\"pull-right\">Time: <span id=\"ytplayertime" + pid + "\"><\/span><\/h4>" +
         "<\/div>";
     }
   },
@@ -247,8 +247,10 @@ var CustomYtp = {
       var playbut = document.getElementById("ytplaybut" + ytpid);
       if (ytp.isMuted()) {
         mutebut.innerHTML = "Unmute";
+        player.classList.add('muted');
       } else {
         mutebut.innerHTML = "Mute";
+        player.classList.remove('muted');
       }
       if (ytp.getPlayerState() == 1) {
         playbut.innerHTML = _i8n.s('PlayerPauseBtn');

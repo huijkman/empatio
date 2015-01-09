@@ -12,7 +12,8 @@ var _i8n = new function Translations (){
   };
 
   this.s = function(id) {
-    var str = getStr(id);
+    var lang = document.documentElement.lang;
+    var str = getStr(lang, id);
     for(var i=1;i<arguments.length;i++)
       str = str.replace(/%[i@]/, arguments[i]);
     return str;

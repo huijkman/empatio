@@ -30,6 +30,9 @@ handlers:
 - url: /people
   static_dir: empatio-site/people
 
+- url: /golive/css
+  static_dir: empatio-site/golive/css
+
 - url: /.*
   script: main.app
 

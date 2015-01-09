@@ -96,14 +96,14 @@ var CustomYtp = {
         "<\/div>" +
         "<h3 class=\"semantic\">Player Controls<\/h3>" +
         "<ul class=\"ytplayerbuttons\">" +
-        "<li><button type=\"button\" id=\"ytplaybut" + pid + "\">Play<\/button><\/li>" +
-        "<li><button type=\"button\" id=\"ytforwardbut" + pid + "\">Forward 20%<\/button><\/li>" +
-        "<li><button type=\"button\" id=\"ytbackbut" + pid + "\">Back 20%<\/button><\/li>" +
-        "<li><button type=\"button\" id=\"ytstopbut" + pid + "\">Stop<\/button><\/li>" +
-        "<li><button type=\"button\" id=\"ytvolupbut" + pid + "\">Volume Up<\/button><\/li>" +
-        "<li><button type=\"button\" id=\"ytvoldownbut" + pid + "\">Volume Down<\/button><\/li>" +
-        "<li><button type=\"button\" id=\"ytmutebut" + pid + "\">Mute<\/button><\/li>" +
-        "<li><button type=\"button\" id=\"ytloopbut" + pid + "\">Loop<\/button><\/li>" +
+        "<li><button type=\"button\" class=\"button-play-pause\" id=\"ytplaybut" + pid + "\">Play<\/button><\/li>" +
+        "<li><button type=\"button\" class=\"button-forward\" id=\"ytforwardbut" + pid + "\">Forward 20%<\/button><\/li>" +
+        "<li><button type=\"button\" class=\"button-back\" id=\"ytbackbut" + pid + "\">Back 20%<\/button><\/li>" +
+        "<li><button type=\"button\" class=\"button-stop\" id=\"ytstopbut" + pid + "\">Stop<\/button><\/li>" +
+        "<li><button type=\"button\" class=\"button-volume-up\" id=\"ytvolupbut" + pid + "\">Volume Up<\/button><\/li>" +
+        "<li><button type=\"button\" class=\"button-volume-down\" id=\"ytvoldownbut" + pid + "\">Volume Down<\/button><\/li>" +
+        "<li><button type=\"button\" class=\"button-mute\" id=\"ytmutebut" + pid + "\">Mute<\/button><\/li>" +
+        "<li><button type=\"button\" class=\"button-loop\" id=\"ytloopbut" + pid + "\">Loop<\/button><\/li>" +
         "<\/ul>" +
         "<h4>Currently Playing: <span id=\"ytvidtitle" + pid + "\"><\/span><\/h4>" +
         "<h4>Time: <span id=\"ytplayertime" + pid + "\"><\/span><\/h4>";
@@ -235,6 +235,7 @@ var CustomYtp = {
 
   updateButtonState: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
+    var player = ytp.parentNode;
     if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
       var mutebut = document.getElementById("ytmutebut" + ytpid);
       var playbut = document.getElementById("ytplaybut" + ytpid);
@@ -244,10 +245,14 @@ var CustomYtp = {
         mutebut.innerHTML = "Mute";
       }
       if (ytp.getPlayerState() == 1) {
-        playbut.innerHTML = "Pause"
+        playbut.innerHTML = "Pause";
+        player.classList.add('playing');
       }
       if (ytp.getPlayerState() == 2) {
-        playbut.innerHTML = "Play"
+        playbut.innerHTML = "Play";
+      }
+      if(ytp.getPlayerState() == 0){
+        player.classList.remove('playing');
       }
     }
   },
@@ -354,14 +359,13 @@ var CustomYtp = {
   ytplay: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
     var parent = ytp.parentNode;
-    var caption = parent.nextElementSibling;
     if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
       if (ytp.getPlayerState() == "1") {
+        parent.classList.remove('playing');
         ytp.pauseVideo();
-        caption.classList.add('hidden');
       } else {
         ytp.playVideo();
-        caption.classList.remove('hidden');
+        parent.classList.add('playing');
       }
     }
   },
@@ -371,7 +375,6 @@ var CustomYtp = {
     if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
       ytp.pauseVideo();
       ytp.seekTo("0");
-      ytp.parentNode.nextElementSibling.classList.add('hidden');
     }
   },
 

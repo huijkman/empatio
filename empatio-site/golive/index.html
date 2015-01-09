@@ -55,7 +55,7 @@
       </p>
     </footer>
 
-    <div class="modalscreen"></div>
+    <div class="modalscreen"><!--a href="" class="close-modalscreen">Close</a--></div>
 
     <script>
       var humans = document.querySelectorAll(".human"); 
@@ -64,6 +64,7 @@
         el.addEventListener('click', function(evt){
           evt.preventDefault();
           document.querySelector(".modalscreen").classList.add('active');
+          document.querySelector(".close-modalscreen").focus();
         });
       });
 

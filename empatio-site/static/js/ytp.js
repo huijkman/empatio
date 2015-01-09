@@ -160,7 +160,7 @@ var CustomYtp = {
     if (list.length > 1) {
       var listH = document.createElement("h3");
       listH.classList.add("playlisth");
-      var listHText = document.createTextNode("Video Play List");
+      var listHText = document.createTextNode("Video playlist");
       listH.appendChild(listHText);
       ytp.appendChild(listH);
       var listUl = document.createElement("ul");
@@ -245,11 +245,11 @@ var CustomYtp = {
         mutebut.innerHTML = "Mute";
       }
       if (ytp.getPlayerState() == 1) {
-        playbut.innerHTML = "Pause";
+        playbut.innerHTML = _i8n.s('PlayerPauseBtn');
         player.classList.add('playing');
       }
       if (ytp.getPlayerState() == 2) {
-        playbut.innerHTML = "Play";
+        playbut.innerHTML = _i8n.s('PlayerPlayBtn');
       }
       if(ytp.getPlayerState() == 0){
         player.classList.remove('playing');

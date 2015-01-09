@@ -9,7 +9,6 @@ window.onYouTubePlayerReady = function (playerId) {
 }
 
 var AccessiblePlayer = {
-  init: function(){},
   startPreview: function () {
     //loop through YTP player config instances and handle to YTP dispatcher
     var inst = CustomYtp.ytGetInstances();

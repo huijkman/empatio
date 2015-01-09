@@ -2,11 +2,11 @@ var Terms = {
   'en': {
     'PlayerPlayBtn': 'Play',
     'PlayerPauseBtn': 'Pause',
-    'ColorBlind': 'color blind'
+    'ColorBlind': 'color-blind'
   },
   'nl': {
     'PlayerPlayBtn': 'Afspelen',
-    'PlayerPauseBtn': 'Pauseren',
+    'PlayerPauseBtn': 'Pauzeren',
     'ColorBlind': 'kleurenblind'
   }
 };

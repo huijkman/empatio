@@ -241,8 +241,8 @@ var CustomYtp = {
 
   updateButtonState: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-        console.log(ytp);
-    var player = ytp.parentNode;
+
+    var player = document.querySelector('.ytplayerbox'); //might produce multiple results
     if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
       var mutebut = document.getElementById("ytmutebut" + ytpid);
       var playbut = document.getElementById("ytplaybut" + ytpid);
@@ -365,7 +365,7 @@ var CustomYtp = {
 
   ytplay: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    var parent = ytp.parentNode;
+    var parent = document.querySelector('.ytplayerbox'); //ytp.parentNode;
     if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
       if (ytp.getPlayerState() == "1") {
         parent.classList.remove('playing');

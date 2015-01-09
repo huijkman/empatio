@@ -87,17 +87,18 @@ var CustomYtp = {
 
   // Rendering functions
   ytPlayerBoxDraw: function(aspect, ytpbox, pid) {
-    var width = "640px";
-    if (aspect == "normal") {
+    var width = "100%"; //"640px";
+    /*vif (aspect == "normal") {
       width = "640px";
     } else if (aspect == "wide") {
       width = "1024px";
-    }
+    }*/
     if (ytpbox) {
       ytpbox.style.width = width;
-      ytpbox.innerHTML = "<div id=\"ytapiplayer" + pid + "\">" +
+      ytpbox.innerHTML = "<div class=\"video-container\"><div id=\"ytapiplayer" + pid + "\">" +
         "You need Flash player 8+ and JavaScript enabled to view this video." +
-        "<\/div>" +
+        "<\/div><\/div>" +
+        "<div class=\"ytcontrols\">" +
         "<h3 class=\"semantic\">Player Controls<\/h3>" +
         "<ul class=\"ytplayerbuttons\">" +
         "<li><button type=\"button\" class=\"button-play-pause\" id=\"ytplaybut" + pid + "\">Play<\/button><\/li>" +
@@ -110,7 +111,8 @@ var CustomYtp = {
         "<li><button type=\"button\" class=\"button-loop\" id=\"ytloopbut" + pid + "\">Loop<\/button><\/li>" +
         "<\/ul>" +
         "<h4>Currently Playing: <span id=\"ytvidtitle" + pid + "\"><\/span><\/h4>" +
-        "<h4>Time: <span id=\"ytplayertime" + pid + "\"><\/span><\/h4>";
+        "<h4>Time: <span id=\"ytplayertime" + pid + "\"><\/span><\/h4>" +
+        "<\/div>";
     }
   },
 

@@ -161,39 +161,50 @@ footer {
 /* Youtube player */
 .ytplayerbox {
     margin:2em auto;
+    font-family: "brandon-grotesque",sans-serif;
 }
+.ytplayerbox h1,
+.ytplayerbox h2,
+.ytplayerbox h3,
+.ytplayerbox h4 {
+    font-family: "brandon-grotesque",sans-serif;
+}
+
+
 .ytplayerbuttons ul,
 .ytplayerbuttons li {
     padding:0;
     margin:0;
     list-style: none;
+    vertical-align:top;
 }
 .ytplayerbuttons li {
     display:inline-block;
 }
+.ytplayerbuttons li + li {
+    margin-left:0.2em;
+}
 .ytplayerbuttons button {
     display: inline-block;
     -webkit-appearance: none;
+    vertical-align:top;
     border: none;
     margin:0;
     padding:0.2em;
     cursor: pointer;
-    font-size:1em;
+    font-size:0.8em;
+    font-family: "brandon-grotesque",sans-serif;
+    font-weight:700;
+    background:#fff;
+    opacity:0.8;
+    width:5em;
+    height:5em;
 }
 .ytplayerbuttons .button-play-pause:after {
-    content: '>';
-    font-size: 30px;
-    text-indent: 5px;
-    text-align: center;
-    display: inline-block;
-    width: 100%;
+    content: '+';
 }
 .playing .ytplayerbuttons .button-play-pause:after {
     content: '-';
-    text-indent: 0;
-    font-size: 35px;
-    vertical-align: bottom;
-    margin-top: 2px;
 }
 
 

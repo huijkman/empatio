@@ -1,32 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <title>Tim</title>
   <link rel="stylesheet" href="/golive/css/empatio.css">
   <link rel="stylesheet" href="/golive/css/player.css">
   <script>
-  //set website language based on browser language preference
-  window.onload = function(){
-    var langStr = window.navigator.userLanguage || navigator.language; //userLanguage is IE only
-    var lang = langStr.split('-')[0]; //or maybe better use the ISO language codes? http://en.wikipedia.org/wiki/IETF_language_tag
-    //document.querySelector('html').setAttribute('lang', lang);
-    document.documentElement.lang = lang;
-  };
+
   </script>
 </head>
 <body>
-    <h1>Tim is color blind</h1>
+    <h1>Tim is <span lang-ref="ColorBlind"></span></h1>
     <article>
       <div class="ytplayerbox">
-        <span data-url="ytmovieurl: nHnV8YbTkLk">Closed Captions</span>
+        <span data-url="ytmovieurl: nHnV8YbTkLk">Tim intro</span>
+        <span data-url="ytmovieurl: VL5LBtSnseg">Tim lang</span>
       </div>
     </article>
     <script src="//ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js"></script>
+    <script src="/static/js/terms.js"></script>
+    <script src="/static/js/i8n.js"></script>
     <script src="/static/js/ytp.js"></script>
     <script src="/static/js/video-preview.js"></script>
     <script>
-    window.onload = AccessiblePlayer.startPreview();
+      //set website language based on browser language preference
+      window.onload = function(){
+        var langStr = window.navigator.userLanguage || navigator.language; //userLanguage is IE only
+        var lang = langStr.split('-')[0]; //or maybe better use the ISO language codes? http://en.wikipedia.org/wiki/IETF_language_tag
+        document.querySelector('html').setAttribute('lang', lang);
+        _i8n.init(); //call this on change language
+        AccessiblePlayer.startPreview();
+      };
     </script>
 </body>
 </html>

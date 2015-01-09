@@ -69,6 +69,9 @@ h4 {
     padding:1em;
 
 }
+.page-human .decorated {
+    padding-bottom:0.25em;
+}
 .centered {
     text-align:center;
 }
@@ -91,6 +94,11 @@ h4 {
     min-width:240px;
     cursor:pointer;
 }
+.human.small {
+    margin:0 5% 20px 5%;
+    min-width:80px;
+    cursor:default;
+}
 .human * {
     transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -104,6 +112,9 @@ h2 .small {
     width:100%;
     border-radius:50%;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+.human.small img {
+    width:50%;
 }
 .human a {
     color:#fff;

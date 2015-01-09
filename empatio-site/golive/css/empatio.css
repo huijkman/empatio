@@ -170,6 +170,9 @@ footer {
     font-family: "brandon-grotesque",sans-serif;
 }
 
+.ytplayerbox .video-container {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
 
 .ytplayerbuttons ul,
 .ytplayerbuttons li {
@@ -182,7 +185,7 @@ footer {
     display:inline-block;
 }
 .ytplayerbuttons li + li {
-    margin-left:0.2em;
+    margin-left:0.5em;
 }
 .ytplayerbuttons button {
     display: inline-block;
@@ -199,6 +202,8 @@ footer {
     opacity:0.8;
     width:5em;
     height:5em;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    border-radius:5em;
 }
 .ytplayerbuttons .button-play-pause:after {
     content: '+';

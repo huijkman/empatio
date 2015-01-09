@@ -108,7 +108,7 @@ var CustomYtp = {
         "<li><button type=\"button\" class=\"button-volume-up\" id=\"ytvolupbut" + pid + "\">Volume Up<\/button><\/li>" +
         "<li><button type=\"button\" class=\"button-volume-down\" id=\"ytvoldownbut" + pid + "\">Volume Down<\/button><\/li>" +
         "<li><button type=\"button\" class=\"button-mute\" id=\"ytmutebut" + pid + "\">Mute<\/button><\/li>" +
-        "<li><button type=\"button\" class=\"button-loop\" id=\"ytloopbut" + pid + "\">Loop<\/button><\/li>" +
+        //"<li><button type=\"button\" class=\"button-loop\" id=\"ytloopbut" + pid + "\">Loop<\/button><\/li>" +
         "<\/ul>" +
         "<h4>Currently Playing: <span id=\"ytvidtitle" + pid + "\"><\/span><\/h4>" +
         "<h4>Time: <span id=\"ytplayertime" + pid + "\"><\/span><\/h4>" +
@@ -153,10 +153,10 @@ var CustomYtp = {
       ytm.addEventListener("click", function() {
         CustomYtp.ytmute(pid)
       });
-      var ytl = document.getElementById("ytloopbut" + pid);
-      ytl.addEventListener("click", function() {
-        CustomYtp.ytloop(pid)
-      });
+      // var ytl = document.getElementById("ytloopbut" + pid);
+      // ytl.addEventListener("click", function() {
+      //   CustomYtp.ytloop(pid)
+      // });
       CustomYtp.ytPlayerLoad(ytmovurl, width, pid);
       var titlenode = document.getElementById("ytvidtitle" + pid);
       var titleval = document.createTextNode("\"" + list[0].text + "\"");

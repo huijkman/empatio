@@ -55,24 +55,5 @@
       </p>
     </footer>
 
-    <div class="modalscreen"><!--a href="" class="close-modalscreen">Close</a--></div>
-
-    <script>
-      var humans = document.querySelectorAll(".human"); 
-
-      Array.prototype.forEach.call(humans, function(el, i){
-        el.addEventListener('click', function(evt){
-          evt.preventDefault();
-          document.querySelector(".modalscreen").classList.add('active');
-          document.querySelector(".close-modalscreen").focus();
-        });
-      });
-
-      document.querySelector(".modalscreen").addEventListener('click', function(evt){
-        evt.target.classList.remove('active');
-      });
-      
-    </script>
-
   </body>
 </html>

@@ -4,8 +4,9 @@
   window.on('modal-active', AccessiblePlayer.startPreview);
 });*/
 
-window.onYouTubePlayerReady = function (playerId) {
+window.onYouTubePlayerAPIReady = function () {
   CustomYtp.ytplayer.push(playerId);
+  console.log(playerId, CustomYtp.ytplayer);
 }
 
 var AccessiblePlayer = {

@@ -225,9 +225,9 @@ var CustomYtp = {
       }
       CustomYtp.ytPlayerBoxDraw(ytPlayerAspect, ytp, ytpid);
       CustomYtp.ytPlayerInit(ytPlaylistArray, ytPlayerAspect, ytp, ytpid);
-      setInterval(function() {
+      //setInterval(function() {
         CustomYtp.updateButtonState(ytpid);
-      }, 250);
+      //}, 250);
       setInterval(function() {
         CustomYtp.updateTime(ytpid);
       }, 500);
@@ -239,6 +239,7 @@ var CustomYtp = {
 
   updateButtonState: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
+        console.log(ytp);
     var player = ytp.parentNode;
     if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
       var mutebut = document.getElementById("ytmutebut" + ytpid);
@@ -434,6 +435,7 @@ var CustomYtp = {
   // "fs=1" allows for full-screen button (no JavaScript equiv.)
   ytPlayerLoad: function (ytmovurl, width, pid) {
     var myytpid = "thisytp" + pid;
+    var ytp = document.getElementById(myytpid);
     var myytapiplayer = "ytapiplayer" + pid;
     var ytparams = {
       allowScriptAccess: "always",
@@ -444,8 +446,18 @@ var CustomYtp = {
     var ytatts = {
       id: myytpid
     };
-    swfobject.embedSWF("http://www.youtube.com/v/" +
+    this.ytplayer = new YT.Player(ytp, {
+      videoId: myytpid,
+      playerVars: {
+          //controls: 0,
+          wmode:'transparent'
+      },
+      height: '200',
+      width: '320'
+    });
+
+    /*swfobject.embedSWF("http://www.youtube.com/v/" +
       ytmovurl +
-      "&enablejsapi=1&playerapiid=" + myytpid + "&hd=1&rel=0&fs=1", myytapiplayer, width, "384", "8", null, null, ytparams, ytatts);
+      "&enablejsapi=1&playerapiid=" + myytpid + "&hd=1&rel=0&fs=1", myytapiplayer, width, "384", "8", null, null, ytparams, ytatts);*/
   }
 }

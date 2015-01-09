@@ -1,3 +1,7 @@
+/*
+  Adapted and edited from the original script by Q42
+  2014-2015
+*/
 /***********************************
   Accessible Controls for the YouTube Embedded Video Player
   Copyright (c) 2010 Ken Petri, Web Accessibility Center, The Ohio State University

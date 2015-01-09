@@ -1,3 +1,29 @@
+@charset "UTF-8";
+.abs-centered {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  /* IE 9 */
+  -webkit-transform: translate(-50%, -50%);
+  /* Chrome, Safari, Opera */
+  transform: translate(-50%, -50%); }
+
+.horizontal-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+  vertical-align: top; }
+  .horizontal-scroll .scroll-item {
+    position: relative;
+    display: inline-block;
+    white-space: normal;
+    vertical-align: top; }
+
+.hidden {
+  display: none; }
+
 * {
   box-sizing: border-box; }
 
@@ -33,33 +59,8 @@ h4 {
   font-weight: 400;
   font-size: 1.4em; }
 
-.abs-centered {
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  /* IE 9 */
-  -webkit-transform: translate(-50%, -50%);
-  /* Chrome, Safari, Opera */
-  transform: translate(-50%, -50%); }
-
-.horizontal-scroll {
-  overflow-y: hidden;
-  overflow-x: auto;
-  white-space: nowrap;
-  vertical-align: top; }
-  .horizontal-scroll .scroll-item {
-    position: relative;
-    display: inline-block;
-    white-space: normal;
-    vertical-align: top; }
-
-header {
-  position: fixed;
-  z-index: 999;
-  height: 100%;
-  left: 50%; }
+button {
+  border: none; }
 
 #nav {
   list-style: none; }
@@ -100,6 +101,40 @@ header {
     padding: 1em;
     text-align: center;
     border: 1px solid #222; }
+
+.player {
+  position: absolute;
+  top: 50px;
+  width: 50vw;
+  left: 10px; }
+  .player .button-play-pause {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    -webkit-appearance: none;
+    border: none;
+    background: #F00;
+    cursor: pointer; }
+    .player .button-play-pause:after {
+      content: '►';
+      font-size: 30px;
+      text-indent: 5px;
+      text-align: center;
+      display: inline-block;
+      width: 100%; }
+  .player.playing .button-play-pause:after {
+    content: '◼︎';
+    text-indent: 0;
+    font-size: 35px;
+    vertical-align: bottom;
+    margin-top: 2px; }
+
+header {
+  position: fixed;
+  z-index: 999;
+  height: 100%;
+  left: 50%; }
 
 #start {
   position: relative;
@@ -160,3 +195,5 @@ header {
   background: #fff;
   color: #000;
   text-align: center; }
+
+/*# sourceMappingURL=empatio.css.map */

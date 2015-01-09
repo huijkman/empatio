@@ -32,6 +32,13 @@ class GoLiveHandler(webapp2.RequestHandler):
         }
         self.response.out.write(template.render(path, template_values))
 
+class GoLiveHandlerTim(webapp2.RequestHandler):
+    def get(self):
+        path = os.path.join(os.path.dirname(__file__), 'empatio-site/golive/tim.html')
+        template_values = {
+        }
+        self.response.out.write(template.render(path, template_values))
+
 class BumperHandler(webapp2.RequestHandler):
     def get(self):
         path = os.path.join(os.path.dirname(__file__), 'empatio-site/bumper.html')
@@ -42,5 +49,6 @@ class BumperHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/dev', MainHandler),
     ('/xs', GoLiveHandler),
-    ('/', BumperHandler)
+    ('/', BumperHandler),
+    ('/xs/tim', GoLiveHandlerTim)
 ], debug=True)

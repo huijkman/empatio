@@ -87,20 +87,16 @@ var CustomYtp = {
 
   // Rendering functions
   ytPlayerBoxDraw: function(aspect, ytpbox, pid) {
-    var width = "100%"; //"640px";
-    /*vif (aspect == "normal") {
-      width = "640px";
-    } else if (aspect == "wide") {
-      width = "1024px";
-    }*/
+    var width = "100%";
     if (ytpbox) {
       ytpbox.style.width = width;
       var buttons = ['Play Pause', 'Stop', 'Forward', 'Backward', 'Volume increase', 'Volume decrease', 'Volume Mute']; //TODO translations
+      var classes = ['play2', 'stop', 'forward', 'backward', 'volume-increase', 'volume-decrease', 'volume-mute2']; //TODO translations
       var controls = document.createElement('div');
-      controls.classList.add('ytcontrols');
-      var semanticControlsTitle = document.createElement('p');
+      controls.classList.add('ytcontrols','group');
+      var semanticControlsTitle = document.createElement('h3');
       semanticControlsTitle.classList.add('semantic');
-      semanticControlsTitle.innerHTML = 'Player Controls';
+      semanticControlsTitle.innerHTML = 'Alternate Player Controls';
       var controlsBtns = document.createElement('ul');
       controlsBtns.classList.add('ytplayerbuttons');
       for (var i = 0; i < buttons.length; i++) {
@@ -108,17 +104,19 @@ var CustomYtp = {
         btn.setAttribute('type', 'button');
         btn.setAttribute('id', 'yt'+buttons[i].toLowerCase().split(' ').join('')+'but'+pid);
         btn.innerHTML = buttons[i];
-        btn.classList.add('icon-'+buttons[i].toLowerCase().split(' ').join('-'));
+        btn.classList.add('icon-'+classes[i]);
         btn.classList.add('icon-btn');
         var li = document.createElement('li');
         li.appendChild(btn);
         controlsBtns.appendChild(li);
       };
-      var currentTitle = document.createElement('p');
+      var currentTitle = document.createElement('h4');
+      currentTitle.classList.add('pull-left');
       currentTitle.innerHTML = 'Currently Playing:';
       var divTitle = document.createElement('span');
       divTitle.setAttribute('id', 'ytvidtitle'+pid);
-      var elapsedTime = document.createElement('p');
+      var elapsedTime = document.createElement('h4');
+      elapsedTime.classList.add('pull-right');
       elapsedTime.innerHTML = 'Time: ';
       var time = document.createElement('span');
       time.setAttribute('id', 'ytplayertime'+pid);
@@ -142,7 +140,7 @@ var CustomYtp = {
     var ytmovurl = list[0].url;
     if (ytmovurl) {
       var ytpl = ytbox.querySelector("#ytplaypausebut" + pid);
-      ytpl.classList.add('icon-play');
+      ytpl.classList.add('icon-play2');
       ytpl.addEventListener("click", function(e) {
         CustomYtp.ytplay(pid);
       });
@@ -245,12 +243,12 @@ var CustomYtp = {
       }
       CustomYtp.ytPlayerBoxDraw(ytPlayerAspect, ytbox, ytpid);
       CustomYtp.ytPlayerInit(self.ytPlaylistArray, ytPlayerAspect, ytbox, ytpid);
-      /*setInterval(function() {
+      setInterval(function() {
         CustomYtp.updateButtonState(ytpid);
       }, 250);
       setInterval(function() {
         CustomYtp.updateTime(ytpid);
-      }, 500);*/
+      }, 500);
     }
   },
 
@@ -272,10 +270,12 @@ var CustomYtp = {
     var playbut = ytp.querySelector("#ytplaypausebut" + ytpid);
     if (player.isMuted()) {
       mutebut.innerHTML = "Unmute";
-      ytp.classList.add('muted');
+      mutebut.classList.remove('icon-volume-mute2');
+      mutebut.classList.add('icon-volume-medium');
     } else {
       mutebut.innerHTML = "Mute";
-      ytp.classList.remove('muted');
+      mutebut.classList.add('icon-volume-mute2');
+      mutebut.classList.remove('icon-volume-medium');
     }
     if (player.getPlayerState() == 1) {
       playbut.innerHTML = _i8n.s('PlayerPauseBtn');
@@ -284,12 +284,12 @@ var CustomYtp = {
     }
     if (player.getPlayerState() == 2) {
       playbut.innerHTML = _i8n.s('PlayerPlayBtn');
-      playbut.classList.add('icon-play');
+      playbut.classList.add('icon-play2');
       playbut.classList.remove('icon-pause');
     }
     if(player.getPlayerState() == 0){
       ytp.classList.remove('playing');
-      playbut.classList.add('icon-play');
+      playbut.classList.add('icon-play2');
       playbut.classList.remove('icon-pause');
     }
   },
@@ -391,6 +391,7 @@ var CustomYtp = {
       }
       if (vol <= 20) {
         nvol = "0"
+
       }
       CustomYtp.ytplayer.setVolume(nvol);
     //}

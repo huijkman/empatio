@@ -219,6 +219,7 @@ ul.ytplayerbuttons,
     vertical-align:top;
 }
 ul.ytplayerbuttons {
+    padding-top:0.5em;
     width:100%;
 }
 .ytplayerbuttons li {
@@ -248,34 +249,6 @@ ul.ytplayerbuttons {
 .ytplayerbuttons button.icon-btn:before {
     font-size:2em;
 }
-.ytplayerbuttons .button-play-pause:before {
-    content: "\e601";
-}
-.playing .ytplayerbuttons .button-play-pause:before {
-    content: "\e602";
-}
-.ytplayerbuttons .button-forward:before {
-    content: "\e605";
-}
-.ytplayerbuttons .button-back:before {
-    content: "\e604";
-}
-.ytplayerbuttons .button-stop:before {
-    content: "\e603";
-}
-.ytplayerbuttons .button-volume-up:before {
-    content: "\e60b";
-}
-.ytplayerbuttons .button-volume-down:before {
-    content: "\e60c";
-}
-.ytplayerbuttons .button-mute:before {
-    content: "\e60a";
-}
-.muted .ytplayerbuttons .button-mute:before {
-    content: "\e607";
-}
-
 
 .video-container {
     position: relative;

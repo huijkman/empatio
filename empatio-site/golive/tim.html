@@ -13,7 +13,6 @@
     <!-- CSS -->
     <link href="/static/css/icons.css" rel="stylesheet">
     <link href="/golive/css/empatio.css" rel="stylesheet">
-    <link rel="stylesheet" href="/golive/css/player.css">
 
     <link rel="shortcut icon" href="/static/images/favicon.ico">
 
@@ -24,7 +23,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class="page-human">
+  <body>
     <header class="centered">
       <a href="/xs" class="btn-hdr left">&lsaquo; Back</a>
       <a href="/tim-nl.html" lang="nl" class="btn-hdr right">Nederlands</a>
@@ -37,9 +36,11 @@
     </header>
     <section class="centered limited-col">
       
-        <div class="ytplayerbox">
-          <span data-url="ytmovieurl: VL5LBtSnseg">Tim lang</span>
+      <div class="ytplayerbox">
+        <div class="video-container">
+          <div data-role="yt-player"><span data-url="ytmovieurl: VL5LBtSnseg">Tim is color-blind</span></div>
         </div>
+      </div>
 
     </section>
     <section class="centered">
@@ -55,7 +56,8 @@
       </p>
     </footer>
 
-    <script src="//ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js"></script> -->
+    <script src="//youtube.com/iframe_api"></script>
     <script src="/static/js/terms.js"></script>
     <script src="/static/js/i8n.js"></script>
     <script src="/static/js/ytp.js"></script>
@@ -67,7 +69,8 @@
         var lang = langStr.split('-')[0]; //or maybe better use the ISO language codes? http://en.wikipedia.org/wiki/IETF_language_tag
         document.querySelector('html').setAttribute('lang', lang);
         _i8n.init(); //call this on change language
-        AccessiblePlayer.startPreview();
+
+        //AccessiblePlayer.startPreview();
       };
     </script>
   </body>

@@ -39,8 +39,11 @@
       <h1>Tim is <span lang-ref="ColorBlind"></span></h1>
       <article>
         <div class="ytplayerbox">
-          <span data-url="ytmovieurl: nHnV8YbTkLk">Tim intro</span>
-          <span data-url="ytmovieurl: VL5LBtSnseg">Tim lang</span>
+          <div data-role="yt-player"></div>
+          <p>
+            <span data-url="ytmovieurl: nHnV8YbTkLk">Tim intro</span>
+            <span data-url="ytmovieurl: VL5LBtSnseg">Tim lang</span>
+          </p>
         </div>
       </article>
     </section>
@@ -64,7 +67,8 @@
         var lang = langStr.split('-')[0]; //or maybe better use the ISO language codes? http://en.wikipedia.org/wiki/IETF_language_tag
         document.querySelector('html').setAttribute('lang', lang);
         _i8n.init(); //call this on change language
-        AccessiblePlayer.startPreview();
+
+        //AccessiblePlayer.startPreview();
       };
     </script>
   </body>

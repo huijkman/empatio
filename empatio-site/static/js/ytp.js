@@ -38,7 +38,7 @@ var CustomYtp = {
   // get the instances of the player div to populate
   ytGetInstances: function() {
     var matchedArray = [];
-    matchedArray = document.body.querySelectorAll('.ytplayerbox');
+    matchedArray = document.body.querySelectorAll('[data-role="yt-player"]');
     return matchedArray;
   },
   // Generic, cross-browser load and event listeners from Edwards and Adams, "JavaScript Anthology"
@@ -95,28 +95,43 @@ var CustomYtp = {
     }*/
     if (ytpbox) {
       ytpbox.style.width = width;
-      ytpbox.innerHTML = "<div class=\"video-container\"><div id=\"ytapiplayer" + pid + "\">" +
-        "You need Flash player 8+ and JavaScript enabled to view this video." +
-        "<\/div><\/div>" +
-        "<div class=\"ytcontrols\">" +
-        "<h3 class=\"semantic\">Player Controls<\/h3>" +
-        "<ul class=\"ytplayerbuttons\">" +
-        "<li><button type=\"button\" class=\"button-play-pause\" id=\"ytplaybut" + pid + "\">Play<\/button><\/li>" +
-        "<li><button type=\"button\" class=\"button-forward\" id=\"ytforwardbut" + pid + "\">Forward 20%<\/button><\/li>" +
-        "<li><button type=\"button\" class=\"button-back\" id=\"ytbackbut" + pid + "\">Back 20%<\/button><\/li>" +
-        "<li><button type=\"button\" class=\"button-stop\" id=\"ytstopbut" + pid + "\">Stop<\/button><\/li>" +
-        "<li><button type=\"button\" class=\"button-volume-up\" id=\"ytvolupbut" + pid + "\">Volume Up<\/button><\/li>" +
-        "<li><button type=\"button\" class=\"button-volume-down\" id=\"ytvoldownbut" + pid + "\">Volume Down<\/button><\/li>" +
-        "<li><button type=\"button\" class=\"button-mute\" id=\"ytmutebut" + pid + "\">Mute<\/button><\/li>" +
-        "<li><button type=\"button\" class=\"button-loop\" id=\"ytloopbut" + pid + "\">Loop<\/button><\/li>" +
-        "<\/ul>" +
-        "<h4>Currently Playing: <span id=\"ytvidtitle" + pid + "\"><\/span><\/h4>" +
-        "<h4>Time: <span id=\"ytplayertime" + pid + "\"><\/span><\/h4>" +
-        "<\/div>";
+      var buttons = ['Play', 'Stop', 'Forward', 'Back', 'Volume up', 'Volume down', 'Mute', 'Loop']; //TODO translations
+      var controls = document.createElement('div');
+      controls.classList.add('ytcontrols');
+      var semanticControlsTitle = document.createElement('p');
+      semanticControlsTitle.classList.add('semantic');
+      semanticControlsTitle.innerHTML = 'Player Controls';
+      var controlsBtns = document.createElement('ul');
+      controlsBtns.classList.add('ytplayerbuttons');
+      for (var i = 0; i < buttons.length; i++) {
+        var btn = document.createElement('button');
+        btn.setAttribute('type', 'button');
+        btn.setAttribute('id', 'yt'+buttons[i].toLowerCase().split(' ').join('')+'but'+pid);
+        btn.innerHTML = buttons[i];
+        btn.classList.add(buttons[i].split(' ').join('-'));
+        var li = document.createElement('li');
+        li.appendChild(btn);
+        controlsBtns.appendChild(li);
+      };
+      var currentTitle = document.createElement('p');
+      currentTitle.innerHTML = 'Currently Playing:';
+      var divTitle = document.createElement('span');
+      divTitle.setAttribute('id', 'ytvidtitle'+pid);
+      var elapsedTime = document.createElement('p');
+      elapsedTime.innerHTML = 'Time: ';
+      var time = document.createElement('span');
+      time.setAttribute('id', 'ytplayertime'+pid);
+      elapsedTime.appendChild(time);
+      currentTitle.appendChild(divTitle);
+      controls.appendChild(semanticControlsTitle);
+      controls.appendChild(controlsBtns);
+      controls.appendChild(currentTitle);
+      controls.appendChild(elapsedTime);
+      ytpbox.appendChild(controls);
     }
   },
 
-  ytPlayerInit: function (list, aspect, ytp, pid) {
+  ytPlayerInit: function (list, aspect, ytbox, pid) {
     var width = "640";
     if (aspect == "normal") {
       width = "640";
@@ -125,43 +140,44 @@ var CustomYtp = {
     }
     var ytmovurl = list[0].url;
     if (ytmovurl) {
-      var ytpl = document.getElementById("ytplaybut" + pid);
+      var ytpl = ytbox.querySelector("#ytplaybut" + pid);
       ytpl.addEventListener("click", function(e) {
         CustomYtp.ytplay(pid);
       });
-      var ytf = document.getElementById("ytforwardbut" + pid);
+      var ytf = ytbox.querySelector("#ytforwardbut" + pid);
       ytf.addEventListener("click", function() {
         CustomYtp.ytforward(pid);
       });
-      var ytb = document.getElementById("ytbackbut" + pid);
+      var ytb = ytbox.querySelector("#ytbackbut" + pid);
       ytb.addEventListener("click", function() {
         CustomYtp.ytback(pid);
       });
-      var yts = document.getElementById("ytstopbut" + pid);
+      var yts = ytbox.querySelector("#ytstopbut" + pid);
       yts.addEventListener("click", function() {
         CustomYtp.ytstop(pid);
       });
-      var ytvu = document.getElementById("ytvolupbut" + pid);
+      var ytvu = ytbox.querySelector("#ytvolumeupbut" + pid);
       ytvu.addEventListener("click", function() {
         CustomYtp.ytvolup(pid);
       });
-      var ytvd = document.getElementById("ytvoldownbut" + pid);
+      var ytvd = ytbox.querySelector("#ytvolumedownbut" + pid);
       ytvd.addEventListener("click", function() {
-        CustomYtp.ytvoldown(pid)
+        CustomYtp.ytvoldown(pid);
       });
-      var ytm = document.getElementById("ytmutebut" + pid);
+      var ytm = ytbox.querySelector("#ytmutebut" + pid);
       ytm.addEventListener("click", function() {
-        CustomYtp.ytmute(pid)
+        CustomYtp.ytmute(pid);
       });
-      var ytl = document.getElementById("ytloopbut" + pid);
+      var ytl = ytbox.querySelector("#ytloopbut" + pid);
       ytl.addEventListener("click", function() {
-        CustomYtp.ytloop(pid)
+        CustomYtp.ytloop(pid);
       });
-      CustomYtp.ytPlayerLoad(ytmovurl, width, pid);
-      var titlenode = document.getElementById("ytvidtitle" + pid);
+      //CustomYtp.ytPlayerLoad(ytmovurl, width, pid);
+      var titlenode = ytbox.querySelector("#ytvidtitle" + pid);
       var titleval = document.createTextNode("\"" + list[0].text + "\"");
       titlenode.appendChild(titleval);
     }
+    return; //TEMP
     // only create a playlist if more than one video is specified
     if (list.length > 1) {
       var listH = document.createElement("h3");
@@ -185,24 +201,27 @@ var CustomYtp = {
             MS IE's event registration model uses attachEvent() method, which creates a reference to the
             function, instead of a copy (like other browsers addEventListener() method). */
         listLink.addEventListener('click', function() {
-          CustomYtp.ytLoadNewVideo(pid, this.id, this.firstChild.nodeValue)
+          //CustomYtp.ytLoadNewVideo(pid, this.id, this.firstChild.nodeValue)
         });
-        CustomYtp.ytAttachEventListener(listLink, "click", CustomYtp.ytStopDefaultAction, false);
+        //CustomYtp.ytAttachEventListener(listLink, "click", CustomYtp.ytStopDefaultAction, false);
       }
     }
   },
-
+  ytPlaylistArray: [],
   ytPlayerDispatch: function (ytp, ytpid) {
+    var self = this;
     if (ytp) {
       // get movie urls, titles, and other set up variables from page
-      var ytPlaylistArray = [];
+
       var ytPlayerAspect = "normal";
       var movpattern = /^ytmovieurl:.*$/;
       var movmatch = /^ytmovieurl:(.*)$/;
       var aspectpattern = /^ytplayeraspect:.*$/;
       var aspectmatch = /^ytplayeraspect:(.*)$/;
-      var captions = ytp.querySelectorAll('[data-url]');
-      var aspects = ytp.querySelectorAll('[data-ratio]')
+
+      var ytbox = document.body.querySelector('.ytplayerbox');
+      var captions = ytbox.querySelectorAll('[data-url]');
+      var aspects = ytbox.querySelectorAll('[data-ratio]');
       for (var i = 0; i < captions.length; i++) {
         var url = captions[i].getAttribute('data-url');
         if (movpattern.test(url)) {
@@ -213,7 +232,7 @@ var CustomYtp = {
             url: yturl,
             text: yttext
           };
-          ytPlaylistArray.push(ytlistobj);
+          self.ytPlaylistArray.push(ytlistobj);
         }
       }
       if(aspects) {
@@ -225,42 +244,47 @@ var CustomYtp = {
           }
         }
       }
-      CustomYtp.ytPlayerBoxDraw(ytPlayerAspect, ytp, ytpid);
-      CustomYtp.ytPlayerInit(ytPlaylistArray, ytPlayerAspect, ytp, ytpid);
-      //setInterval(function() {
+      CustomYtp.ytPlayerBoxDraw(ytPlayerAspect, ytbox, ytpid);
+      CustomYtp.ytPlayerInit(self.ytPlaylistArray, ytPlayerAspect, ytbox, ytpid);
+      /*setInterval(function() {
         CustomYtp.updateButtonState(ytpid);
-      //}, 250);
+      }, 250);
       setInterval(function() {
         CustomYtp.updateTime(ytpid);
-      }, 500);
+      }, 500);*/
     }
   },
 
   // YouTube API-specific code
-  ytplayer: [],
+  ytplayer: null,
+
+  onPlayerStateChange: function(event){
+    CustomYtp.updateButtonState(0);
+    CustomYtp.updateTime(0);
+  },
+  onPlayerReady: function(event){
+    console.log('yt player ready', event);
+  },
 
   updateButtonState: function (ytpid) {
-    var ytp = document.getElementById("thisytp" + ytpid);
-
-    var player = document.querySelector('.ytplayerbox'); //might produce multiple results
-    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
-      var mutebut = document.getElementById("ytmutebut" + ytpid);
-      var playbut = document.getElementById("ytplaybut" + ytpid);
-      if (ytp.isMuted()) {
-        mutebut.innerHTML = "Unmute";
-      } else {
-        mutebut.innerHTML = "Mute";
-      }
-      if (ytp.getPlayerState() == 1) {
-        playbut.innerHTML = _i8n.s('PlayerPauseBtn');
-        player.classList.add('playing');
-      }
-      if (ytp.getPlayerState() == 2) {
-        playbut.innerHTML = _i8n.s('PlayerPlayBtn');
-      }
-      if(ytp.getPlayerState() == 0){
-        player.classList.remove('playing');
-      }
+    var ytp = document.querySelector('.ytplayerbox');
+    var player = this.ytplayer;
+    var mutebut = ytp.querySelector("#ytmutebut" + ytpid);
+    var playbut = ytp.querySelector("#ytplaybut" + ytpid);
+    if (player.isMuted()) {
+      mutebut.innerHTML = "Unmute";
+    } else {
+      mutebut.innerHTML = "Mute";
+    }
+    if (player.getPlayerState() == 1) {
+      playbut.innerHTML = _i8n.s('PlayerPauseBtn');
+      ytp.classList.add('playing');
+    }
+    if (player.getPlayerState() == 2) {
+      playbut.innerHTML = _i8n.s('PlayerPlayBtn');
+    }
+    if(player.getPlayerState() == 0){
+      ytp.classList.remove('playing');
     }
   },
 
@@ -276,21 +300,24 @@ var CustomYtp = {
 
   updateTime: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
+    var player = CustomYtp.ytplayer;
+    //if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
       var timespan = document.getElementById("ytplayertime" + ytpid);
-      var timeval = document.createTextNode(CustomYtp.prepTime(Math.round(ytp.getCurrentTime())) + " of " + CustomYtp.prepTime(Math.round(ytp.getDuration())));
+      var currTime = CustomYtp.prepTime(Math.round(player.getCurrentTime()))
+      var dur = CustomYtp.prepTime(Math.round(player.getDuration()));
+      var timeval = document.createTextNode(currTime + " of " + dur);
 
       if (timespan.firstChild) {
         var temp = timespan.firstChild;
         temp.parentNode.removeChild(temp);
       }
       timespan.appendChild(timeval);
-    }
+    //}
   },
   ytLoopInterval: [],
   ytloop: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
+    //if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
       var loopbut = document.getElementById("ytloopbut" + ytpid);
       if (loopbut.firstChild.nodeValue == "Loop") {
         loopbut.firstChild.nodeValue = "UnLoop";
@@ -301,24 +328,24 @@ var CustomYtp = {
         loopbut.firstChild.nodeValue = "Loop";
         clearInterval(CustomYtp.ytLoopInterval[ytpid]);
       }
-    }
+    //}
   },
 
   ytmute: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
-      if (ytp.isMuted()) {
-        ytp.unMute();
+    //if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
+      if (CustomYtp.ytplayer.isMuted()) {
+        CustomYtp.ytplayer.unMute();
       } else {
-        ytp.mute();
+        CustomYtp.ytplayer.mute();
       }
-    }
+    //}
   },
 
   ytvolup: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
-      var vol = ytp.getVolume();
+    //if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
+      var vol = CustomYtp.ytplayer.getVolume();
       var nvol = "0";
       if (vol >= 0) {
         nvol = "20"
@@ -335,14 +362,14 @@ var CustomYtp = {
       if (vol >= 80) {
         nvol = "100"
       }
-      ytp.setVolume(nvol);
-    }
+      CustomYtp.ytplayer.setVolume(nvol);
+    //}
   },
 
   ytvoldown: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
-      var vol = ytp.getVolume();
+    //if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
+      var vol = CustomYtp.ytplayer.getVolume();
       var nvol = "100";
       if (vol <= 100) {
         nvol = "80"
@@ -359,22 +386,22 @@ var CustomYtp = {
       if (vol <= 20) {
         nvol = "0"
       }
-      ytp.setVolume(nvol);
-    }
+      CustomYtp.ytplayer.setVolume(nvol);
+    //}
   },
 
   ytplay: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    var parent = document.querySelector('.ytplayerbox'); //ytp.parentNode;
-    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
-      if (ytp.getPlayerState() == "1") {
-        parent.classList.remove('playing');
-        ytp.pauseVideo();
-      } else {
-        ytp.playVideo();
-        parent.classList.add('playing');
-      }
+    var parent = document.querySelector('.ytplayerbox');
+    //if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
+    if (CustomYtp.ytplayer.getPlayerState() == "1") {
+      parent.classList.remove('playing');
+      CustomYtp.ytplayer.pauseVideo();
+    } else {
+      CustomYtp.playVideo();
+      parent.classList.add('playing');
     }
+    //}
   },
 
   ytstop: function (ytpid) {
@@ -428,38 +455,11 @@ var CustomYtp = {
       titlenode.appendChild(title);
     }
   },
-  // Player embedding code. Uses SWFObject library.
-  // Start with YouTube video default, non-letterbox width of 480x360 (letter is 640x360)
-  // Add chrome on YouTube player: 24px high
-  // cc_load_policy param turns captions on by default, since there is no JavaScript equiv. for doing that
-  // "hd=1" attempts loading high def
-  // "rel=0" turns off YT search and relative links
-  // "fs=1" allows for full-screen button (no JavaScript equiv.)
+
   ytPlayerLoad: function (ytmovurl, width, pid) {
     var myytpid = "thisytp" + pid;
     var ytp = document.getElementById(myytpid);
-    var myytapiplayer = "ytapiplayer" + pid;
-    var ytparams = {
-      allowScriptAccess: "always",
-      allowFullScreen: "true",
-      cc_load_policy: "1",
-      hd: "1"
-    };
-    var ytatts = {
-      id: myytpid
-    };
-    this.ytplayer = new YT.Player(ytp, {
-      videoId: myytpid,
-      playerVars: {
-          //controls: 0,
-          wmode:'transparent'
-      },
-      height: '200',
-      width: '320'
-    });
 
-    /*swfobject.embedSWF("http://www.youtube.com/v/" +
-      ytmovurl +
-      "&enablejsapi=1&playerapiid=" + myytpid + "&hd=1&rel=0&fs=1", myytapiplayer, width, "384", "8", null, null, ytparams, ytatts);*/
+    var self = this;
   }
 }

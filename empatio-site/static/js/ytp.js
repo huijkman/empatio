@@ -95,7 +95,7 @@ var CustomYtp = {
     }*/
     if (ytpbox) {
       ytpbox.style.width = width;
-      var buttons = ['Play', 'Stop', 'Forward', 'Back', 'Volume up', 'Volume down', 'Mute']; //TODO translations
+      var buttons = ['Play Pause', 'Stop', 'Forward', 'Backward', 'Volume increase', 'Volume decrease', 'Volume Mute']; //TODO translations
       var controls = document.createElement('div');
       controls.classList.add('ytcontrols');
       var semanticControlsTitle = document.createElement('p');
@@ -108,7 +108,8 @@ var CustomYtp = {
         btn.setAttribute('type', 'button');
         btn.setAttribute('id', 'yt'+buttons[i].toLowerCase().split(' ').join('')+'but'+pid);
         btn.innerHTML = buttons[i];
-        btn.classList.add(buttons[i].split(' ').join('-'));
+        btn.classList.add('icon-'+buttons[i].toLowerCase().split(' ').join('-'));
+        btn.classList.add('icon-btn');
         var li = document.createElement('li');
         li.appendChild(btn);
         controlsBtns.appendChild(li);
@@ -140,7 +141,8 @@ var CustomYtp = {
     }
     var ytmovurl = list[0].url;
     if (ytmovurl) {
-      var ytpl = ytbox.querySelector("#ytplaybut" + pid);
+      var ytpl = ytbox.querySelector("#ytplaypausebut" + pid);
+      ytpl.classList.add('icon-play');
       ytpl.addEventListener("click", function(e) {
         CustomYtp.ytplay(pid);
       });
@@ -148,7 +150,7 @@ var CustomYtp = {
       ytf.addEventListener("click", function() {
         CustomYtp.ytforward(pid);
       });
-      var ytb = ytbox.querySelector("#ytbackbut" + pid);
+      var ytb = ytbox.querySelector("#ytbackwardbut" + pid);
       ytb.addEventListener("click", function() {
         CustomYtp.ytback(pid);
       });
@@ -156,15 +158,15 @@ var CustomYtp = {
       yts.addEventListener("click", function() {
         CustomYtp.ytstop(pid);
       });
-      var ytvu = ytbox.querySelector("#ytvolumeupbut" + pid);
+      var ytvu = ytbox.querySelector("#ytvolumeincreasebut" + pid);
       ytvu.addEventListener("click", function() {
         CustomYtp.ytvolup(pid);
       });
-      var ytvd = ytbox.querySelector("#ytvolumedownbut" + pid);
+      var ytvd = ytbox.querySelector("#ytvolumedecreasebut" + pid);
       ytvd.addEventListener("click", function() {
         CustomYtp.ytvoldown(pid);
       });
-      var ytm = ytbox.querySelector("#ytmutebut" + pid);
+      var ytm = ytbox.querySelector("#ytvolumemutebut" + pid);
       ytm.addEventListener("click", function() {
         CustomYtp.ytmute(pid);
       });
@@ -266,8 +268,8 @@ var CustomYtp = {
   updateButtonState: function (ytpid) {
     var ytp = document.querySelector('.ytplayerbox');
     var player = this.ytplayer;
-    var mutebut = ytp.querySelector("#ytmutebut" + ytpid);
-    var playbut = ytp.querySelector("#ytplaybut" + ytpid);
+    var mutebut = ytp.querySelector("#ytvolumemutebut" + ytpid);
+    var playbut = ytp.querySelector("#ytplaypausebut" + ytpid);
     if (player.isMuted()) {
       mutebut.innerHTML = "Unmute";
       ytp.classList.add('muted');
@@ -277,13 +279,18 @@ var CustomYtp = {
     }
     if (player.getPlayerState() == 1) {
       playbut.innerHTML = _i8n.s('PlayerPauseBtn');
+      playbut.classList.add('icon-pause');
       ytp.classList.add('playing');
     }
     if (player.getPlayerState() == 2) {
       playbut.innerHTML = _i8n.s('PlayerPlayBtn');
+      playbut.classList.add('icon-play');
+      playbut.classList.remove('icon-pause');
     }
     if(player.getPlayerState() == 0){
       ytp.classList.remove('playing');
+      playbut.classList.add('icon-play');
+      playbut.classList.remove('icon-pause');
     }
   },
 
@@ -397,7 +404,7 @@ var CustomYtp = {
       parent.classList.remove('playing');
       CustomYtp.ytplayer.pauseVideo();
     } else {
-      CustomYtp.playVideo();
+      CustomYtp.ytplayer.playVideo();
       parent.classList.add('playing');
     }
     //}
@@ -405,40 +412,40 @@ var CustomYtp = {
 
   ytstop: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
-      ytp.pauseVideo();
-      ytp.seekTo("0");
-    }
+    //if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
+      CustomYtp.ytplayer.pauseVideo();
+      CustomYtp.ytplayer.seekTo("0");
+    //}
   },
 
   ytforward: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
-      var dur = ytp.getDuration();
+    //if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
+      var dur = CustomYtp.ytplayer.getDuration();
       if (dur > 0) {
-        var nt = Math.floor(dur * .2) + ytp.getCurrentTime();
+        var nt = Math.floor(dur * .2) + CustomYtp.ytplayer.getCurrentTime();
         if (nt < dur) {
-          ytp.seekTo(nt);
+          CustomYtp.ytplayer.seekTo(nt);
         } else {
-          ytp.seekTo(dur);
+          CustomYtp.ytplayer.seekTo(dur);
         }
       }
-    }
+    //}
   },
 
   ytback: function (ytpid) {
     var ytp = document.getElementById("thisytp" + ytpid);
-    if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
-      var dur = ytp.getDuration();
+    //if (new RegExp('^(' + CustomYtp.ytplayer.join('|') + ')$').test(ytp.id)) {
+      var dur = CustomYtp.ytplayer.getDuration();
       if (dur > 0) {
-        var nt = ytp.getCurrentTime() - Math.floor(dur * .2);
+        var nt = CustomYtp.ytplayer.getCurrentTime() - Math.floor(dur * .2);
         if (nt > 0) {
-          ytp.seekTo(nt);
+          CustomYtp.ytplayer.seekTo(nt);
         } else {
-          ytp.seekTo(0);
+          CustomYtp.ytplayer.seekTo(0);
         }
       }
-    }
+    //}
   },
 
   ytLoadNewVideo: function (ytpid, url, titleval) {

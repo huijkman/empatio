@@ -95,7 +95,7 @@ var CustomYtp = {
     }*/
     if (ytpbox) {
       ytpbox.style.width = width;
-      var buttons = ['Play', 'Stop', 'Forward', 'Back', 'Volume up', 'Volume down', 'Mute', 'Loop']; //TODO translations
+      var buttons = ['Play', 'Stop', 'Forward', 'Back', 'Volume up', 'Volume down', 'Mute']; //TODO translations
       var controls = document.createElement('div');
       controls.classList.add('ytcontrols');
       var semanticControlsTitle = document.createElement('p');
@@ -168,10 +168,7 @@ var CustomYtp = {
       ytm.addEventListener("click", function() {
         CustomYtp.ytmute(pid);
       });
-      var ytl = ytbox.querySelector("#ytloopbut" + pid);
-      ytl.addEventListener("click", function() {
-        CustomYtp.ytloop(pid);
-      });
+
       //CustomYtp.ytPlayerLoad(ytmovurl, width, pid);
       var titlenode = ytbox.querySelector("#ytvidtitle" + pid);
       var titleval = document.createTextNode("\"" + list[0].text + "\"");
@@ -273,8 +270,10 @@ var CustomYtp = {
     var playbut = ytp.querySelector("#ytplaybut" + ytpid);
     if (player.isMuted()) {
       mutebut.innerHTML = "Unmute";
+      ytp.classList.add('muted');
     } else {
       mutebut.innerHTML = "Mute";
+      ytp.classList.remove('muted');
     }
     if (player.getPlayerState() == 1) {
       playbut.innerHTML = _i8n.s('PlayerPauseBtn');

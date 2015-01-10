@@ -21,6 +21,28 @@ body {
 .font-special {
     font-family: "corner-store",serif;
 }
+.screen-reader-text { 
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+.pull-left {
+    float:left;
+}
+.pull-right {
+    float:right;
+}
+.group:before,
+.group:after {
+    content: "";
+    display: table;
+} 
+.group:after {
+    clear: both;
+}
+.group {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
 .btn-hdr {
     position:absolute;
     transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
@@ -29,7 +51,6 @@ body {
     color:#000;
     background-color:#fff;
     font-weight:300;
-    background-color:#fff;
     opacity:0.8;
     padding:0.2em 0.5em;
     text-decoration:none;
@@ -161,39 +182,98 @@ footer {
 /* Youtube player */
 .ytplayerbox {
     margin:2em auto;
+    font-family: "brandon-grotesque",sans-serif;
 }
-.ytplayerbuttons ul,
+.ytplayerbox h1,
+.ytplayerbox h2,
+.ytplayerbox h3,
+.ytplayerbox h4 {
+    font-family: "brandon-grotesque",sans-serif;
+}
+.ytplayerbox h3 {
+    font-size:1.2em;
+    padding:1em 0;
+    margin:0;
+}
+.ytplayerbox h4 {
+    font-size:1em;
+    font-weight:300;
+    padding:1em;
+    margin:0;
+}
+
+.ytplayerbox .video-container {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.ytcontrols {
+    background:#000;
+    background:rgba(0,0,0,0.7);
+}
+
+ul.ytplayerbuttons,
 .ytplayerbuttons li {
     padding:0;
     margin:0;
     list-style: none;
+    vertical-align:top;
+}
+ul.ytplayerbuttons {
+    width:100%;
 }
 .ytplayerbuttons li {
     display:inline-block;
 }
+.ytplayerbuttons li + li {
+    margin-left:0.5em;
+}
 .ytplayerbuttons button {
+    text-indent:-9999em;
     display: inline-block;
+    position:relative;
     -webkit-appearance: none;
+    vertical-align:top;
     border: none;
     margin:0;
     padding:0.2em;
     cursor: pointer;
-    font-size:1em;
+    opacity:0.8;
+    width:4em;
+    height:4em;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    border-radius:5em;
+    background-color:#fff;
+    opacity:0.8;
 }
-.ytplayerbuttons .button-play-pause:after {
-    content: '>';
-    font-size: 30px;
-    text-indent: 5px;
-    text-align: center;
-    display: inline-block;
-    width: 100%;
+.ytplayerbuttons button.icon-btn:before {
+    font-size:2em;
 }
-.playing .ytplayerbuttons .button-play-pause:after {
-    content: '-';
-    text-indent: 0;
-    font-size: 35px;
-    vertical-align: bottom;
-    margin-top: 2px;
+.ytplayerbuttons .button-play-pause:before {
+    content: "\e601";
+}
+.playing .ytplayerbuttons .button-play-pause:before {
+    content: "\e602";
+}
+.ytplayerbuttons .button-forward:before {
+    content: "\e605";
+}
+.ytplayerbuttons .button-back:before {
+    content: "\e604";
+}
+.ytplayerbuttons .button-stop:before {
+    content: "\e603";
+}
+.ytplayerbuttons .button-volume-up:before {
+    content: "\e60b";
+}
+.ytplayerbuttons .button-volume-down:before {
+    content: "\e60c";
+}
+.ytplayerbuttons .button-mute:before {
+    content: "\e60a";
+}
+.muted .ytplayerbuttons .button-mute:before {
+    content: "\e607";
 }
 
 

@@ -27,7 +27,7 @@
     <header class="centered">
       <a href="/nl/tim" lang="nl" class="btn-hdr right">Nederlands</a>
       <nav>
-        <a href="/" class="btn-home font-special"><span aria-hidden="true" class="icon-chevron-left"></span>Home</a>
+        <a href="/dev" class="btn-home font-special"><span aria-hidden="true" class="icon-chevron-left"></span>Home</a>
         <a href="/arend" class="btn-next font-special">Arend<span aria-hidden="true" class="icon-chevron-right"></span></a>
       </nav>
       <h1 class="decorated">
@@ -51,21 +51,15 @@
       </h2>
       <p>Usefull tools and other links</p>
     </section>
-    <footer>
-      <div class="limited-col">
-        <h3 class="decorated centered"><span class="decorated-content">Help Empat.io</span></h3>
-        <p>
-          Empat.io has only just begun. I want to create much more movies and add lots of helpfull information. Therefore I need help. I need people who want to tell their story so I can show it here. And I want to know what you think. All thoughts and suggestions are welcome. Or maybe you like to help in an other way. Please let me know at: johan@q42.nl or [twitter]
-        </p>
-      </div>
+    <footer class="centered">
+      <h3 class="decorated"><span class="decorated-content">About Empat.io</span></h3>
+      <p>
+        Empat.io has only just begun. I want to create much more movies and add lots of helpfull information. Therefore I need help. I need people who want to tell their story so I can show it here. And I want to know what you think. All thoughts and suggestions are welcome. Or maybe you like to help in an other way. Please let me know at: <a href="mailto:johan@q42.nl" class="inline-link">johan@q42.nl</a> or <a href="http://twitter.com/huijkman" class="inline-link">@huijkman</a>
+      </p>
+      <h4 class="decorated"><span class="decorated-content">About me</span></h4>
+      <p>I am <a href="http://linkedin.com/in/johanhuijkman" class="inline-link">Johan Huijkman</a> an Interaction Engineer at <a href="http://q42.com" class="inline-link">Q42</a></p>
     </footer>
 
-    <!-- <script src="//ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js"></script> -->
-    <script src="//youtube.com/iframe_api"></script>
-    <script src="/static/js/terms.js"></script>
-    <script src="/static/js/i8n.js"></script>
-    <script src="/static/js/ytp.js"></script>
-    <script src="/static/js/video-preview.js"></script>
     <script>
       //set website language based on browser language preference
       window.onload = function(){
@@ -77,5 +71,18 @@
         //AccessiblePlayer.startPreview();
       };
     </script>
+
+    <script>
+      var tag = document.createElement('script');
+      tag.src = "http://www.youtube.com/player_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    </script>
+
+    <script src="/static/js/terms.js"></script>
+    <script src="/static/js/i8n.js"></script>
+    <script src="/static/js/ytp.js"></script>
+    <script src="/static/js/video-preview.js"></script>
+
   </body>
 </html>

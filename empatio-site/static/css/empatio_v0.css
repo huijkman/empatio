@@ -1,0 +1,199 @@
+@charset "UTF-8";
+.abs-centered {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  /* IE 9 */
+  -webkit-transform: translate(-50%, -50%);
+  /* Chrome, Safari, Opera */
+  transform: translate(-50%, -50%); }
+
+.horizontal-scroll {
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+  vertical-align: top; }
+  .horizontal-scroll .scroll-item {
+    position: relative;
+    display: inline-block;
+    white-space: normal;
+    vertical-align: top; }
+
+.hidden {
+  display: none; }
+
+* {
+  box-sizing: border-box; }
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%; }
+
+body {
+  font-family: "ff-tisa-sans-web-pro",sans-serif;
+  font-weight: normal;
+  color: #222; }
+
+h1 {
+  font-family: "quatro-slab",serif;
+  font-weight: 700;
+  font-size: 2.4em; }
+
+h2 {
+  font-family: "quatro-slab",serif;
+  font-weight: 700;
+  font-size: 2.0em; }
+
+h3 {
+  font-family: "quatro-slab",serif;
+  font-weight: 400;
+  font-size: 1.8em; }
+
+h4 {
+  font-family: "quatro-slab",serif;
+  font-weight: 400;
+  font-size: 1.4em; }
+
+button {
+  border: none; }
+
+#nav {
+  list-style: none; }
+  #nav li {
+    position: absolute;
+    left: 50%;
+    opacity: 1;
+    pointer-events: auto;
+    -ms-transform: translate(-50%, 0);
+    /* IE 9 */
+    -webkit-transform: translate(-50%, 0);
+    /* Chrome, Safari, Opera */
+    transform: translate(-50%, 0);
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease; }
+    #nav li#nav-0 {
+      top: 0.5em; }
+    #nav li#nav-1 {
+      top: 100%;
+      margin-top: -7.5em; }
+    #nav li#nav-2 {
+      top: 100%;
+      margin-top: -3.75em; }
+  #nav.selected-2 li#nav-1 {
+    top: 4.25em;
+    margin-top: 0; }
+  #nav .current {
+    display: none; }
+  #nav a {
+    display: block;
+    white-space: nowrap;
+    color: #222;
+    min-width: 15em;
+    padding: 1em;
+    text-align: center;
+    border: 1px solid #222; }
+
+.player {
+  position: absolute;
+  top: 50px;
+  width: 50vw;
+  left: 10px; }
+  .player .button-play-pause {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    -webkit-appearance: none;
+    border: none;
+    background: #F00;
+    cursor: pointer; }
+    .player .button-play-pause:after {
+      content: '►';
+      font-size: 30px;
+      text-indent: 5px;
+      text-align: center;
+      display: inline-block;
+      width: 100%; }
+  .player.playing .button-play-pause:after {
+    content: '◼︎';
+    text-indent: 0;
+    font-size: 35px;
+    vertical-align: bottom;
+    margin-top: 2px; }
+
+header {
+  position: fixed;
+  z-index: 999;
+  height: 100%;
+  left: 50%; }
+
+#start {
+  position: relative;
+  background: #000;
+  color: #fff;
+  text-align: center; }
+  #start .background-1 {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent url(/static/images/keyboard-persp.jpg) 50% 100% no-repeat;
+    background-size: 80% auto;
+    opacity: 0.8; }
+  #start .background-2 {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent url(/static/images/code.jpg) 50% 50% no-repeat;
+    background-size: 80% auto;
+    opacity: 0.5; }
+  #start blockquote {
+    z-index: 3;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2em 0; }
+    #start blockquote p {
+      font-family: "quatro-slab",serif;
+      font-size: 2.4em;
+      line-height: 1.4; }
+    #start blockquote footer {
+      margin-top: 1.2em; }
+
+#people {
+  position: relative;
+  background: #fff;
+  color: #333;
+  text-align: center; }
+  #people .person {
+    width: 600px;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.1); }
+    #people .person a {
+      color: #333; }
+    #people .person .img {
+      width: 200px;
+      height: 200px;
+      border-radius: 200px;
+      background: red; }
+
+#interests {
+  position: relative;
+  background: #fff;
+  color: #000;
+  text-align: center; }
+
+/*# sourceMappingURL=empatio.css.map */

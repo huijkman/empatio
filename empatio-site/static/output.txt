@@ -1,0 +1,2 @@
+{"result":[]}
+{"result":[{"alternative":[{"transcript":"dus dat dus als ik wat minder"},{"transcript":"dus dat dus als je wat wilt"},{"transcript":"dus dat dus als je wat minder"},{"transcript":"wilde dus dat dus als ik wat minder"},{"transcript":"wilde dus dat als ik wat minder"}],"final":true}],"result_index":0}

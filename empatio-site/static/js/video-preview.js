@@ -19,7 +19,8 @@ var AccessiblePlayer = {
       videoId: url,
       playerVars: {
           //controls: 0,
-          wmode:'transparent'
+          wmode:'transparent',
+          rel: 0
       },
       events: {
         //onReady: CustomYtp.onPlayerReady,

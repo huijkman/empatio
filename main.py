@@ -25,23 +25,16 @@ class MainHandler(webapp2.RequestHandler):
         }
         self.response.out.write(template.render(path, template_values))
 
-class GoLiveHandler(webapp2.RequestHandler):
+class TimHandler(webapp2.RequestHandler):
     def get(self):
-        path = os.path.join(os.path.dirname(__file__), 'empatio-site/golive/index.html')
+        path = os.path.join(os.path.dirname(__file__), 'empatio-site/tim.html')
         template_values = {
         }
         self.response.out.write(template.render(path, template_values))
 
-class GoLiveHandlerTim(webapp2.RequestHandler):
+class ArendHandler(webapp2.RequestHandler):
     def get(self):
-        path = os.path.join(os.path.dirname(__file__), 'empatio-site/golive/tim.html')
-        template_values = {
-        }
-        self.response.out.write(template.render(path, template_values))
-
-class GoLiveHandlerTimTest(webapp2.RequestHandler):
-    def get(self):
-        path = os.path.join(os.path.dirname(__file__), 'empatio-site/golive/test-tim.html')
+        path = os.path.join(os.path.dirname(__file__), 'empatio-site/arend.html')
         template_values = {
         }
         self.response.out.write(template.render(path, template_values))
@@ -54,9 +47,8 @@ class BumperHandler(webapp2.RequestHandler):
         self.response.out.write(template.render(path, template_values))
 
 app = webapp2.WSGIApplication([
-    ('/dev', MainHandler),
-    ('/xs', GoLiveHandler),
     ('/', BumperHandler),
-    ('/xs/tim', GoLiveHandlerTim),
-    ('/xs/test-tim', GoLiveHandlerTimTest)
+    ('/dev', MainHandler),
+    ('/tim', TimHandler),
+    ('/arend', ArendHandler)
 ], debug=True)

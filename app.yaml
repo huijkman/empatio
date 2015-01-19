@@ -24,15 +24,6 @@ handlers:
 - url: /static/vendors
   static_dir: empatio-site/static/vendors
 
-- url: /media
-  static_dir: empatio-site/media
-
-- url: /people
-  static_dir: empatio-site/people
-
-- url: /golive/css
-  static_dir: empatio-site/golive/css
-
 - url: /.*
   script: main.app
 

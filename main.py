@@ -25,6 +25,20 @@ class MainHandler(webapp2.RequestHandler):
         }
         self.response.out.write(template.render(path, template_values))
 
+class TimHandler(webapp2.RequestHandler):
+    def get(self):
+        path = os.path.join(os.path.dirname(__file__), 'empatio-site/tim.html')
+        template_values = {
+        }
+        self.response.out.write(template.render(path, template_values))
+
+class ArendHandler(webapp2.RequestHandler):
+    def get(self):
+        path = os.path.join(os.path.dirname(__file__), 'empatio-site/arend.html')
+        template_values = {
+        }
+        self.response.out.write(template.render(path, template_values))
+
 class BumperHandler(webapp2.RequestHandler):
     def get(self):
         path = os.path.join(os.path.dirname(__file__), 'empatio-site/bumper.html')
@@ -33,6 +47,8 @@ class BumperHandler(webapp2.RequestHandler):
         self.response.out.write(template.render(path, template_values))
 
 app = webapp2.WSGIApplication([
+    ('/', BumperHandler),
     ('/dev', MainHandler),
-    ('/', BumperHandler)
+    ('/tim', TimHandler),
+    ('/arend', ArendHandler)
 ], debug=True)

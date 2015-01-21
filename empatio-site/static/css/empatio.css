@@ -263,22 +263,10 @@ footer {
     background:rgba(0,0,0,0.7);
 }
 
-ul.ytplayerbuttons,
-.ytplayerbuttons li {
-    padding:0;
-    margin:0;
-    list-style: none;
-    vertical-align:top;
-}
-ul.ytplayerbuttons {
+.ytplayerbuttons {
     width:100%;
 }
-.ytplayerbuttons li {
-    display:inline-block;
-}
-.ytplayerbuttons li + li {
-    margin-left:0.5em;
-}
+
 .ytplayerbuttons button {
     transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     text-indent:-9999em;
@@ -287,7 +275,7 @@ ul.ytplayerbuttons {
     -webkit-appearance: none;
     vertical-align:top;
     border: none;
-    margin:0;
+    margin:0.2em;
     padding:0.2em;
     cursor: pointer;
     opacity:0.8;

@@ -25,46 +25,28 @@
   </head>
   <body>
     <header class="centered">
-      <a href="/nl/tim" lang="nl" class="btn-hdr right">Nederlands</a>
+      <a href="/nl/arend" lang="nl" class="btn-hdr right">Nederlands</a>
       <nav>
         <a href="/dev" class="btn-home font-special"><span aria-hidden="true" class="icon-chevron-left"></span>Home</a>
-        <a href="/arend" class="btn-next font-special">Arend<span aria-hidden="true" class="icon-chevron-right"></span></a>
+        <a href="/tim" class="btn-next font-special">Tim<span aria-hidden="true" class="icon-chevron-right"></span></a>
       </nav>
       <h1 class="decorated">
-        <span class="decorated-content">Tim</span>
+        <span class="decorated-content">Arend</span>
       </h1>
       <figure class="human small">
-          <img src="/static/images/tim-intro.jpg" alt="A portrait of Tim" />
+          <img src="/static/images/arend-intro.jpg" alt="A portrait of Arend" />
       </figure>
     </header>
     <section class="centered limited-col">
       <div class="ytplayerbox">
         <div class="video-container">
-
-          <iframe id="ytvideo" width="853" height="480" src="//www.youtube.com/embed/sOSmc5SAJg0?enablejsapi=1&amp;rel=0&amp;" frameborder="0" allowfullscreen title="Youtube video player: Tim is color blind"></iframe>
-          </div>
-          <div class="ytcontrols group">
-            <h3 class="semantic">Alternate Player Controls</h3>
-            <div class="ytplayerbuttons">
-              <button type="button" id="ytplaypausebut" class="icon-play2 icon-btn" data-alt-text="Pause">Play</button>
-              <!--button type="button" id="ytpausebut" class="icon-pause icon-btn">Pause</button-->
-              <button type="button" id="ytstopbut" class="icon-stop icon-btn">Stop</button>
-              <button type="button" id="ytforwardbut" class="icon-forward icon-btn">Forward</button>
-              <button type="button" id="ytbackwardbut" class="icon-backward icon-btn">Backward</button>
-              <button type="button" id="ytvolumeincreasebut" class="icon-volume-increase icon-btn">Volume increase</button>
-              <button type="button" id="ytvolumedecreasebut" class="icon-volume-decrease icon-btn">Volume decrease</button>
-              <button type="button" id="ytvolumemutebut" class="icon-volume-mute2 icon-btn" data-alt-text="Unmute">Mute</button>
-            </div>
-            <h4 class="pull-left">Currently Playing:<span id="ytvidtitle0">"Tim is color blind"</span></h4>
-            <h4 class="pull-right">Time: <span id="ytplayertime0">00:00 of 03:00</span></h4>
-          </div>
-
+          <div data-role="yt-player"><span data-url="ytmovieurl: Owlnm-a88Go">Arend is blind</span></div>
+        </div>
       </div>
     </section>
-    <!-- Owlnm-a88Go -->
     <section class="limited-col">
       <h2 class="decorated centered">
-        <span class="decorated-content">About Color blindness</span>
+        <span class="decorated-content">About Blindness</span>
       </h2>
       <p>Useful tools and other links</p>
     </section>
@@ -77,8 +59,29 @@
       <p>I am <a href="http://linkedin.com/in/johanhuijkman" class="inline-link">Johan Huijkman</a> an Interaction Engineer at <a href="http://q42.com" class="inline-link">Q42</a></p>
     </footer>
 
-    <script src="/static/js/ytplayer.js"></script>
-    
+    <script>
+      //set website language based on browser language preference
+      window.onload = function(){
+        var langStr = window.navigator.userLanguage || navigator.language; //userLanguage is IE only
+        var lang = langStr.split('-')[0]; //or maybe better use the ISO language codes? http://en.wikipedia.org/wiki/IETF_language_tag
+        document.querySelector('html').setAttribute('lang', lang);
+        _i8n.init(); //call this on change language
 
+        //AccessiblePlayer.startPreview();
+      };
+    </script>
+
+    <script>
+      var tag = document.createElement('script');
+      tag.src = "http://www.youtube.com/player_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    </script>
+
+    <script src="/static/js/terms.js"></script>
+    <script src="/static/js/i8n.js"></script>
+    <script src="/static/js/ytp.js"></script>
+    <script src="/static/js/video-preview.js"></script>
+    
   </body>
 </html>

@@ -10,7 +10,9 @@ function onYouTubePlayerAPIReady() {
   player = new YT.Player('ytvideo', {
     events: {
       // call this function when player is ready to use
-      'onReady': onPlayerReady
+      'onReady': onPlayerReady,
+      // call this function when player changes state
+      'onStateChange': onPlayerStateChange
     }
   });
 }
@@ -135,7 +137,65 @@ function onPlayerReady(event) {
       this.classList.add('icon-volume-medium');
     }
   });
+
+  updateTime();
+
+  setInterval(function() {
+    updateTime();
+  }, 500);
   
+}
+
+function updateButtonState() {
+    alert('bla');
+  if (player.isMuted()) {
+    mutebut.classList.remove('icon-volume-mute2');
+    mutebut.classList.add('icon-volume-medium');
+  } else {
+    mutebut.classList.add('icon-volume-mute2');
+    mutebut.classList.remove('icon-volume-medium');
+  }
+  if (player.getPlayerState() == 1) {
+    playPauseButton.classList.remove('icon-pause');
+    playPauseButton.classList.add('icon-play2');
+  }
+  if (player.getPlayerState() == 2) {
+    playbut.classList.add('icon-play2');
+    playbut.classList.remove('icon-pause');
+  }
+  if(player.getPlayerState() == 0){
+    playbut.classList.add('icon-play2');
+    playbut.classList.remove('icon-pause');
+  }
+}
+
+function onPlayerStateChange(event){
+  updateButtonState();
+  updateTime();
+}
+
+function prepTime(s) {
+  var hours = Math.floor(s / 3600);
+  var minutes = Math.floor(s / 60) - (hours * 60);
+  var seconds = s - (hours * 3600) - (minutes * 60);
+  if (minutes < 10) minutes = "0" + minutes;
+  if (seconds < 10) seconds = "0" + seconds;
+  hours = (hours < 1) ? "" : hours + ":";
+  return hours + minutes + ":" + seconds;
+}
+
+function updateTime() {
+  var timespan = document.getElementById("ytplayertime");
+  var timestr = timespan.getAttribute("data-time-text")
+  var currTime = prepTime(Math.round(player.getCurrentTime()))
+  var dur = prepTime(Math.round(player.getDuration()));
+  var timeval = document.createTextNode(currTime + " " + timestr + " " + dur);
+
+  if (timespan.firstChild) {
+    var temp = timespan.firstChild;
+    temp.parentNode.removeChild(temp);
+  }
+  timespan.appendChild(timeval);
 }
 
 // Inject YouTube API script

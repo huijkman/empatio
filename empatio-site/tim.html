@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
 
+
     <title>empat.io - Tim</title>
 
     <script src="//use.typekit.net/uwf6zzp.js"></script>
@@ -25,6 +26,7 @@
   </head>
   <body>
     <header class="centered">
+      <h1 class="logo">Empatio</h1>
       <a href="/nl/tim" lang="nl" class="btn-hdr right">Nederlands</a>
       <nav>
         <a href="/dev" class="btn-home font-special"><span aria-hidden="true" class="icon-chevron-left"></span>Home</a>
@@ -41,43 +43,44 @@
       <div class="ytplayerbox">
         <div class="video-container">
 
-          <iframe id="ytvideo" width="853" height="480" src="//www.youtube.com/embed/sOSmc5SAJg0?enablejsapi=1&amp;rel=0&amp;" frameborder="0" allowfullscreen title="Youtube video player: Tim is color blind"></iframe>
-          </div>
-          <div class="ytcontrols group">
-            <h3 class="semantic">Alternate Player Controls</h3>
-            <div class="ytplayerbuttons">
-              <button type="button" id="ytplaypausebut" class="icon-play2 icon-btn" data-alt-text="Pause">Play</button>
-              <!--button type="button" id="ytpausebut" class="icon-pause icon-btn">Pause</button-->
+          <noscript><div id="no-movie">This movie can also be watched on youtube: <a href="http://www.youtube.com/watch?v=sOSmc5SAJg0" class="inline-link">Tim is color blind</a></div></noscript>
+
+          <iframe id="ytvideo" width="853" height="480" src="//www.youtube.com/embed/sOSmc5SAJg0?enablejsapi=1&amp;rel=0&amp;hl=en&amp;cc_lang_pref=en&amp;cc_load_policy=1" frameborder="0" allowfullscreen title="Youtube video player: Tim is color blind"></iframe>
+        </div>
+        <div class="ytcontrols group">
+          <p><a href="#controls-panel" id="controls-trigger" class="inline-link" data-open-text="Open alternative controls" data-close-text="Close alternative controls">Open alternative controls</a> <em>(If the standard youtube video controls don't work for you)</em></p>
+          <div id="controls-panel">
+            <h4 class="pull-left">Currently Playing:<span id="ytvidtitle">"Tim is color blind"</span></h4>
+            <h4 class="pull-right">Time: <span id="ytplayertime" data-time-text="of">00:00 of 00:00</span></h4>
+            <div class="ytplayerbuttons group">
+              <button type="button" id="ytplaypausebut" class="icon-play2 icon-btn" data-text-pause="Pause" data-text-play="Play">Play</button>
               <button type="button" id="ytstopbut" class="icon-stop icon-btn">Stop</button>
               <button type="button" id="ytforwardbut" class="icon-forward icon-btn">Forward</button>
               <button type="button" id="ytbackwardbut" class="icon-backward icon-btn">Backward</button>
               <button type="button" id="ytvolumeincreasebut" class="icon-volume-increase icon-btn">Volume increase</button>
               <button type="button" id="ytvolumedecreasebut" class="icon-volume-decrease icon-btn">Volume decrease</button>
-              <button type="button" id="ytvolumemutebut" class="icon-volume-mute2 icon-btn" data-alt-text="Unmute">Mute</button>
+              <button type="button" id="ytvolumemutebut" class="icon-volume-mute2 icon-btn" data-text-unmute="Unmute" data-text-mute="Mute">Mute</button>
             </div>
-            <h4 class="pull-left">Currently Playing:<span id="ytvidtitle">"Tim is color blind"</span></h4>
-            <h4 class="pull-right">Time: <span id="ytplayertime" data-time-text="of">00:00 of 00:00</span></h4>
           </div>
-
+        </div>
       </div>
     </section>
-    <!-- Owlnm-a88Go -->
-    <section class="limited-col">
+    <section class="centered limited-col">
       <h2 class="decorated centered">
-        <span class="decorated-content">About Color blindness</span>
+        <span class="decorated-content">About color blindness</span>
       </h2>
       <p>Useful tools and other links</p>
     </section>
     <footer class="centered">
-      <h3 class="decorated"><span class="decorated-content">About Empat.io</span></h3>
+      <h3 class="decorated"><span class="decorated-content">About empat.io</span></h3>
       <p>
-        Empat.io has only just begun. I want to create much more movies and add lots of helpfull information. Therefore I need help. I need people who want to tell their story so I can show it here. And I want to know what you think. All thoughts and suggestions are welcome. Or maybe you like to help in an other way. Please let me know at: <a href="mailto:johan@q42.nl" class="inline-link">johan@q42.nl</a> or <a href="http://twitter.com/huijkman" class="inline-link">@huijkman</a>
+        Empat.io has only just begun. It needs much more videos and lots of helpful information. Therefore I need help. I need people who want to tell their story so I can show it here. And I want to know what you think. All thoughts and suggestions are welcome. Please let me know at: <a href="mailto:johan@q42.nl" class="inline-link">johan@q42.nl</a> or <a href="http://twitter.com/huijkman" class="inline-link">@huijkman</a>
       </p>
       <h4 class="decorated"><span class="decorated-content">About me</span></h4>
-      <p>I am <a href="http://linkedin.com/in/johanhuijkman" class="inline-link">Johan Huijkman</a> an Interaction Engineer at <a href="http://q42.com" class="inline-link">Q42</a></p>
+      <p>I'm <a href="http://linkedin.com/in/johanhuijkman" class="inline-link">Johan Huijkman</a>, an Interaction Engineer at <a href="http://q42.com" class="inline-link">Q42</a></p>
     </footer>
 
-    <script src="/static/js/ytplayer.js"></script>
+    <script src="/static/js/empatio.js"></script>
     
 
   </body>

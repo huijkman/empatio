@@ -1,4 +1,22 @@
-var lang = document.querySelector('html').getAttribute('lang');
+// youtube player controls:
+
+var _trigger = document.getElementById('controls-trigger');
+var _controls = document.getElementById('controls-panel');
+
+_trigger.onclick = function(event){
+  event.preventDefault();
+  if(_controls.classList.contains('show')){
+    _controls.classList.remove('show');
+    this.innerHTML = this.getAttribute('data-open-text');
+  }
+  else {
+    _controls.classList.add('show');
+    this.innerHTML = this.getAttribute('data-close-text');
+  }
+};
+
+
+
 // https://developers.google.com/youtube/iframe_api_reference
 
 // global variable for the player
@@ -17,34 +35,31 @@ function onYouTubePlayerAPIReady() {
   });
 }
 
+var playPauseButton = document.getElementById("ytplaypausebut");
+var volMuteButton = document.getElementById("ytvolumemutebut");
+
 function onPlayerReady(event) {
   
   if (player.isMuted()) player.unMute();
 
   // bind events
-  var playPauseButton = document.getElementById("ytplaypausebut");
   playPauseButton.addEventListener("click", function() {
-    changeBtnVal(this);
     if(player.getPlayerState()!=1){
       player.playVideo();
+      this.innerHTML = this.getAttribute('data-text-play');
       this.classList.remove('icon-play2');
       this.classList.add('icon-pause');
     } else {
       player.pauseVideo();
+      this.innerHTML = this.getAttribute('data-text-pause');
       this.classList.remove('icon-pause');
       this.classList.add('icon-play2');
     }
   });
 
-  function changeBtnVal(btn){
-    var currentVal = btn.innerHTML;
-      btn.innerHTML = btn.getAttribute('data-alt-text');
-      btn.setAttribute('data-alt-text',currentVal);
-  }
-
   var stopButton = document.getElementById("ytstopbut");
   stopButton.addEventListener("click", function() {
-    if(player.getPlayerState()==1) changeBtnVal(playPauseButton);
+    if(player.getPlayerState()==1) this.innerHTML = this.getAttribute('data-text-play');
     player.pauseVideo();
     player.seekTo("0");
     playPauseButton.classList.remove('icon-pause');
@@ -124,48 +139,57 @@ function onPlayerReady(event) {
     
   });
 
-  var volMuteButton = document.getElementById("ytvolumemutebut");
   volMuteButton.addEventListener("click", function() {
-    changeBtnVal(volMuteButton);
     if (player.isMuted()) {
       player.unMute();
+      this.innerHTML = this.getAttribute('data-text-mute');
       this.classList.remove('icon-volume-medium');
       this.classList.add('icon-volume-mute2');
     } else {
       player.mute();
+      this.innerHTML = this.getAttribute('data-text-unmute');
       this.classList.remove('icon-volume-mute2');
       this.classList.add('icon-volume-medium');
     }
   });
 
   updateTime();
+  updateButtonState();
 
   setInterval(function() {
     updateTime();
   }, 500);
+
+  setInterval(function() {
+    updateButtonState();
+  }, 250);
   
 }
 
 function updateButtonState() {
-    alert('bla');
   if (player.isMuted()) {
-    mutebut.classList.remove('icon-volume-mute2');
-    mutebut.classList.add('icon-volume-medium');
+    volMuteButton.innerHTML = volMuteButton.getAttribute('data-text-unmute');
+    volMuteButton.classList.remove('icon-volume-mute2');
+    volMuteButton.classList.add('icon-volume-medium');
   } else {
-    mutebut.classList.add('icon-volume-mute2');
-    mutebut.classList.remove('icon-volume-medium');
+    volMuteButton.innerHTML = volMuteButton.getAttribute('data-text-mute');
+    volMuteButton.classList.add('icon-volume-mute2');
+    volMuteButton.classList.remove('icon-volume-medium');
   }
   if (player.getPlayerState() == 1) {
-    playPauseButton.classList.remove('icon-pause');
-    playPauseButton.classList.add('icon-play2');
+    playPauseButton.innerHTML = playPauseButton.getAttribute('data-text-pause');
+    playPauseButton.classList.add('icon-pause');
+    playPauseButton.classList.remove('icon-play2');
   }
   if (player.getPlayerState() == 2) {
-    playbut.classList.add('icon-play2');
-    playbut.classList.remove('icon-pause');
+    playPauseButton.innerHTML = playPauseButton.getAttribute('data-text-play');
+    playPauseButton.classList.add('icon-play2');
+    playPauseButton.classList.remove('icon-pause');
   }
   if(player.getPlayerState() == 0){
-    playbut.classList.add('icon-play2');
-    playbut.classList.remove('icon-pause');
+    playPauseButton.innerHTML = playPauseButton.getAttribute('data-text-play');
+    playPauseButton.classList.add('icon-play2');
+    playPauseButton.classList.remove('icon-pause');
   }
 }
 

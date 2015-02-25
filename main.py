@@ -68,11 +68,11 @@ class BumperHandler(webapp2.RequestHandler):
         self.response.out.write(template.render(path, template_values))
 
 app = webapp2.WSGIApplication([
-    ('/', BumperHandler),
-    ('/dev', MainHandler),
+    ('/bumper', BumperHandler),
+    ('/', MainHandler),
     ('/tim', TimHandler),
     ('/arend', ArendHandler),
-    ('/dev/nl', MainHandlerNL),
+    ('/nl', MainHandlerNL),
     ('/nl/tim', TimHandlerNL),
     ('/nl/arend', ArendHandlerNL)
 ], debug=True)

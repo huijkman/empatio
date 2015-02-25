@@ -37,6 +37,8 @@
     transform: translate(-50%,-50%);
 }
 
+
+
 .icon-envelope-o:before {
 	content: "\f003";
 }
@@ -47,6 +49,10 @@
 
 .icon-chevron-right:before {
 	content: "\f054";
+}
+
+.icon-external-link:before {
+	content: "\f08e";
 }
 
 .icon-play:before {

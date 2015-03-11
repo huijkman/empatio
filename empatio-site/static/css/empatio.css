@@ -150,6 +150,9 @@ h4 {
     font-size:1.2em;
     max-width:800px;
 }
+.bottom-room {
+    padding-bottom:50px;
+}
 .centered p,
 .centered ul {
     margin-left:auto;
@@ -188,6 +191,9 @@ h4 {
     font-weight:bold;
     text-decoration:none;
     border-bottom:1px solid rgba(255,255,255,0.5);
+}
+.centered li a.inline-link {
+    font-size:1.0em;
 }
 .centered li p {
     text-align:left;
@@ -303,6 +309,18 @@ h2 .small {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2)
 }
 
+.full-width {
+    margin:3em 0 1em 0;
+    padding:1em 0;
+    background-color:#000;
+    background-color:rgba(0,0,0,0.5);
+}
+.full-width,
+.full-width .centered li a,
+.full-width .inline-link {
+    color:#efefef;
+}
+
 footer {
     padding-bottom:3em;
     background:#000;
@@ -318,6 +336,16 @@ footer {
 .centered p.footer-bar {
     padding-top:3em;
     padding-bottom:3em;
+}
+footer h4.decorated {
+    padding-bottom:0;
+    margin-top:160px;
+}
+footer h4.decorated:before {
+    top:75%;
+}
+footer h4.decorated:after {
+    top:75%;
 }
 
 /* Youtube player */
@@ -442,13 +470,31 @@ footer {
         min-width:200px;
         min-height:200px;
     }
+    .human.small {
+        min-height:0;
+    }
 }
 
 
 @media all and (max-width: 820px) {
+    .bottom-room {
+        padding-bottom:20px;
+    }
     .centered p,
     .limited-col p {
         padding:0 1em;
+    }
+    .centered li {
+        padding-right: 1em;
+    }
+    footer {
+        padding-bottom: 1em;
+    }
+    footer h4.decorated {
+        margin-top: 8em;
+    }
+    .ytcontrols {   
+        min-height:1.5em;
     }
 }
 

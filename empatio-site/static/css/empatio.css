@@ -309,7 +309,7 @@ h2 .small {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2)
 }
 
-.full-width {
+/*.full-width {
     margin:3em 0 1em 0;
     padding:1em 0;
     background-color:#000;
@@ -319,7 +319,7 @@ h2 .small {
 .full-width .centered li a,
 .full-width .inline-link {
     color:#efefef;
-}
+}*/
 
 footer {
     padding-bottom:3em;

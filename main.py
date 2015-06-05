@@ -60,6 +60,20 @@ class ArendHandlerNL(webapp2.RequestHandler):
         }
         self.response.out.write(template.render(path, template_values))
 
+class NielsHandler(webapp2.RequestHandler):
+    def get(self):
+        path = os.path.join(os.path.dirname(__file__), 'empatio-site/niels.html')
+        template_values = {
+        }
+        self.response.out.write(template.render(path, template_values))
+
+class NielsHandlerNL(webapp2.RequestHandler):
+    def get(self):
+        path = os.path.join(os.path.dirname(__file__), 'empatio-site/niels-nl.html')
+        template_values = {
+        }
+        self.response.out.write(template.render(path, template_values))
+
 class BumperHandler(webapp2.RequestHandler):
     def get(self):
         path = os.path.join(os.path.dirname(__file__), 'empatio-site/bumper.html')
@@ -72,7 +86,9 @@ app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/tim', TimHandler),
     ('/arend', ArendHandler),
+    ('/niels', NielsHandler),
     ('/nl', MainHandlerNL),
     ('/nl/tim', TimHandlerNL),
-    ('/nl/arend', ArendHandlerNL)
+    ('/nl/arend', ArendHandlerNL),
+    ('/nl/niels', NielsHandlerNL)
 ], debug=True)

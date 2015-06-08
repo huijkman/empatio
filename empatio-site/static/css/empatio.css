@@ -12,14 +12,14 @@ body {
     font-family: "brandon-grotesque",sans-serif;
     font-weight:300;
     color:#fff;
-    background:#000 url(/static/images/bg-main.jpg) 50% 50% no-repeat;
-    background-size:cover;
+    background: #000 url(/static/images/bg-main.jpg) 50% 50% no-repeat;
+    background-size: cover;
 }
 .font-default {
     font-family: "brandon-grotesque",sans-serif;
 }
 .font-special {
-    font-family: "lust-script-display",serif;
+    font-family: "merriweather",serif;
 }
 .screen-reader-text { 
   position: absolute;
@@ -72,6 +72,10 @@ body {
     left:1em;
 }
 
+header {
+    height: 4em;
+    background-color: white;
+}
 header nav {
     z-index:2;
     position:relative;
@@ -103,7 +107,7 @@ header nav a span {
 }
 
 h1 {
-    font-family: "lust-script-display",serif;
+    font-family: "merriweather",serif;
     font-weight:normal;
     font-size:2.4em;
 }
@@ -113,24 +117,23 @@ h1.logo {
     left:0.5em;
     padding:0;
     margin:0;
-    font-size:1.2em;
 }
 h1 a {
     text-decoration:none;
     color: white;
 }
 h2 {
-    font-family: "lust-script-display",serif;
+    font-family: "merriweather",serif;
     font-weight:normal;
     font-size:2.0em;
 }
 h3 {
-    font-family: "lust-script-display",serif;
+    font-family: "merriweather",serif;
     font-weight:normal;
     font-size:1.8em;
 }
 h4 {
-    font-family: "lust-script-display",serif;
+    font-family: "merriweather",serif;
     font-weight:normal;
     font-size:1.4em;
 }
@@ -271,7 +274,7 @@ h2 .small {
 }
 .empty-circle {
     cursor:default;
-    font-family: "lust-script-display",serif;
+    font-family: "merriweather",serif;
     position:relative;
     vertical-align:top;
     display:inline-block;

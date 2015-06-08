@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width">
 
 
-    <title>empat.io - Tim</title>
+    <title>Empat.io - Tim</title>
 
     <script src="//use.typekit.net/uwf6zzp.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
@@ -36,21 +36,27 @@
     </script>
   </head>
   <body>
-    <header class="centered">
-      <h1 class="logo"><a href="/">Empatio</a></h1>
-      <a href="/nl/tim" lang="nl" class="btn-hdr right">Nederlands</a>
+    <header>
+      <a href="/" class="logo"><img src="/static/images/logo1.png" alt="Empat.io"/></a>
       <nav>
-        <a href="/niels" class="btn-home font-special"><span aria-hidden="true" class="icon-chevron-left"></span>Niels</a>
-        <a href="/arend" class="btn-next font-special">Arend<span aria-hidden="true" class="icon-chevron-right"></span></a>
+        <ul class="top-nav">
+          <li><a href="/">Home</a></li> 
+          <li><a href="http://blog.empat.io">Blog</a></li> 
+          <li><a href="/about">About Empatio</a></li> 
+          <li><a href="/nl/tim" lang="nl">Nederlands</a></li>
+        </ul>
       </nav>
-      <h1 class="decorated">
-        <span class="decorated-content">Tim</span>
-      </h1>
-      <figure class="human small">
-          <img src="/static/images/tim-intro.jpg" alt="A portrait of Tim" />
-      </figure>
     </header>
-    <section class="centered limited-col">
+    <header class="nav-pages dark">
+      <h1>Tim</h1>
+      <nav>
+        <a href="/niels" class="page-left"><span aria-hidden="true" class="icon-chevron-left"></span> Niels</a>
+        <a href="/arend" class="page-right">Arend <span aria-hidden="true" class="icon-chevron-right"></span></a>
+      </nav>
+      <img src="/static/images/tim-intro.jpg" class="hdr-person-page" alt="" />
+    </header>
+
+    <section class="centered extra-dark">
       <div class="ytplayerbox">
         <div class="video-container">
 
@@ -59,7 +65,7 @@
           <iframe id="ytvideo" width="853" height="480" src="//www.youtube.com/embed/eIulUKIRco4?enablejsapi=1&amp;rel=0&amp;hl=en&amp;cc_lang_pref=en&amp;cc_load_policy=1" frameborder="0" allowfullscreen title="Youtube video player: Tim is color blind"></iframe>
         </div>
         <div class="ytcontrols group">
-          <p><a href="#controls-panel" id="controls-trigger" class="inline-link" data-open-text="Open alternative controls" data-close-text="Close alternative controls">Open alternative controls</a> <em>(If the standard youtube video controls don't work for you)</em></p>
+          <p><a href="#controls-panel" id="controls-trigger" class="inline-link-inverted" data-open-text="Open alternative controls" data-close-text="Close alternative controls">Open alternative controls</a> <em>(If the standard youtube video controls don't work for you)</em></p>
           <div id="controls-panel">
             <h4 class="pull-left">Currently Playing:<span id="ytvidtitle">"Tim is color blind"</span></h4>
             <h4 class="pull-right">Time: <span id="ytplayertime" data-time-text="of">00:00 of 00:00</span></h4>
@@ -77,9 +83,7 @@
       </div>
     </section>
     <section class="centered limited-col bottom-room">
-      <h2 class="decorated centered">
-        <span class="decorated-content">About color blindness</span>
-      </h2>
+      <h2 class="left-aligned">About color blindness</h2>
       <ul>
         <li><a href="http://wearecolorblind.com/">Wearecolorblind.com</a>
         <p>Dedicated to making the web a better place for the color blind. Offers loads of information and examples.</p></li>

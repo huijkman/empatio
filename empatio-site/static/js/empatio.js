@@ -1,21 +1,7 @@
 // youtube player controls:
 
-var _trigger = document.getElementById('controls-trigger');
+var _trigger = document.getElementById('yt-poster');
 var _controls = document.getElementById('controls-panel');
-
-_trigger.onclick = function(event){
-  event.preventDefault();
-  if(_controls.classList.contains('show')){
-    _controls.classList.remove('show');
-    this.innerHTML = this.getAttribute('data-open-text');
-  }
-  else {
-    _controls.classList.add('show');
-    this.innerHTML = this.getAttribute('data-close-text');
-  }
-};
-
-
 
 // https://developers.google.com/youtube/iframe_api_reference
 
@@ -41,6 +27,7 @@ var volMuteButton = document.getElementById("ytvolumemutebut");
 function onPlayerReady(event) {
   
   if (player.isMuted()) player.unMute();
+  _trigger.classList.add('active');
 
   // bind events
   playPauseButton.addEventListener("click", function() {
@@ -55,7 +42,20 @@ function onPlayerReady(event) {
       this.classList.remove('icon-pause');
       this.classList.add('icon-play2');
     }
+    if(_trigger.classList.contains('visible')) {
+      _trigger.classList.remove('visible');
+    }
   });
+
+
+  _trigger.onclick = function(event){
+    event.preventDefault();
+    if(this.classList.contains('active')){
+      playPauseButton.click();
+    } else {
+      alert('not active yet');
+    }
+  };
 
   var stopButton = document.getElementById("ytstopbut");
   stopButton.addEventListener("click", function() {

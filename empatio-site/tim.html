@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,400italic|Merriweather+Sans:800,800italic' rel='stylesheet' type='text/css'>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
 
 
-    <title>empat.io - Tim</title>
-
-    <script src="//use.typekit.net/uwf6zzp.js"></script>
-    <script>try{Typekit.load();}catch(e){}</script>
+    <title>Empat.io - Tim</title>
 
     <!-- CSS -->
     <link href="/static/css/icons.css" rel="stylesheet">
@@ -36,20 +35,87 @@
     </script>
   </head>
   <body>
-    <header class="centered">
-      <h1 class="logo"><a href="/">Empatio</a></h1>
-      <a href="/nl/tim" lang="nl" class="btn-hdr right">Nederlands</a>
-      <nav>
-        <a href="/niels" class="btn-home font-special"><span aria-hidden="true" class="icon-chevron-left"></span>Niels</a>
-        <a href="/arend" class="btn-next font-special">Arend<span aria-hidden="true" class="icon-chevron-right"></span></a>
-      </nav>
-      <h1 class="decorated">
-        <span class="decorated-content">Tim</span>
-      </h1>
-      <figure class="human small">
-          <img src="/static/images/tim-intro.jpg" alt="A portrait of Tim" />
-      </figure>
+    <header class="mini-page site-header">
+      <div class="cols cols-auto">
+        <div class="col">
+          <a href="/" class="logo"><img class="site-logo" alt="Empatio" src="/static/images/logo1.png" /></a>
+        </div>
+        <nav class="col">
+          <ul class="cols cols-auto">
+            <li class="col"><a href="/">Home</a></li>
+            <li class="col"><a href="http://blog.empat.io">Blog</a></li>
+            <li class="col"><a href="/about">About &amp; Contact</a></li>
+            <li class="col"><a href="/nl/tim">Nederlands</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
+
+    <header class="page-header mini-page dark">
+      <nav class="cols cols-auto">
+        <h1 class="col order-2">
+          <img class="thumb round" alt="" src="/static/images/tim-intro.jpg">
+          Tim is color blind
+        </h1>
+        <p class="col order-1">
+          <a class="h4" href="/niels"><span class="icon-chevron-left"></span> Niels</a>
+        </p>
+        <p class="col order-3">
+          <a class="h4" href="/arend">Arend <span class="icon-chevron-right"></span></a>
+        </p>
+    </nav>
+    </header>
+
+    <div class="video">
+      <div class="ytplayerbox">
+        <div class="video-container">
+
+          <noscript><div id="no-movie">This movie can also be watched on youtube: <a href="http://www.youtube.com/watch?v=eIulUKIRco4" class="inline-link">Tim is color blind</a></div></noscript>
+
+          <iframe id="ytvideo" width="853" height="480" src="//www.youtube.com/embed/eIulUKIRco4?enablejsapi=1&amp;rel=0&amp;hl=en&amp;cc_lang_pref=en&amp;cc_load_policy=1" frameborder="0" allowfullscreen title="Youtube video player: Tim is color blind"></iframe>
+
+
+          <a href="#ytvideo" id="yt-poster" class="visible">Play "Tim is color blind"</a>
+        </div>
+
+        <div class="ytcontrols group">
+          <p>Standard video controls not working for you? <a href="#controls-panel" id="controls-trigger" class="inline-link" data-open-text="Open alternative controls" data-close-text="Close alternative controls">Open alternative controls</a></p>
+          <div id="controls-panel">
+            <h4 class="pull-left">Currently Playing:<span id="ytvidtitle">"Tim is color blind"</span></h4>
+            <h4 class="pull-right">Time: <span id="ytplayertime" data-time-text="of">00:00 of 00:00</span></h4>
+            <div class="ytplayerbuttons">
+              <button type="button" id="ytplaypausebut" class="icon-play2 icon-btn" data-text-pause="Pause" data-text-play="Play">Play</button>
+              <button type="button" id="ytstopbut" class="icon-stop icon-btn">Stop</button>
+              <button type="button" id="ytforwardbut" class="icon-forward icon-btn">Forward</button>
+              <button type="button" id="ytbackwardbut" class="icon-backward icon-btn">Backward</button>
+              <button type="button" id="ytvolumeincreasebut" class="icon-volume-increase icon-btn">Volume increase</button>
+              <button type="button" id="ytvolumedecreasebut" class="icon-volume-decrease icon-btn">Volume decrease</button>
+              <button type="button" id="ytvolumemutebut" class="icon-volume-mute2 icon-btn" data-text-unmute="Unmute" data-text-mute="Mute">Mute</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mini-page">
+      <ul class="cols cols-variable">
+        <li class="col">
+          <h2>Video 1</h2>
+          <iframe width="300" height="200" src="https://www.youtube.com/embed/eIulUKIRco4" frameborder="0" allowfullscreen></iframe>
+        </li>
+        <li class="col">
+          <h2>Video 2</h2>
+          <iframe width="300" height="200" src="https://www.youtube.com/embed/eIulUKIRco4" frameborder="0" allowfullscreen></iframe>
+        </li>
+        <li class="col">
+          <h2>[Title]</h2>
+          <p>[Text]</p>
+        </li>
+      </ul>
+    </div>
+
+
+
     <section class="centered limited-col">
       <div class="ytplayerbox">
         <div class="video-container">

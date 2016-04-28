@@ -1,2 +1,0 @@
-{"result":[]}
-{"result":[{"alternative":[{"transcript":"nieuws alles"},{"transcript":"nu.nl nieuws alles"},{"transcript":"nieuws ja"},{"transcript":"nu.nl nieuws ja"},{"transcript":"rtl 5 nieuws alles"}],"final":true}],"result_index":0}

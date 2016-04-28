@@ -20,35 +20,35 @@ import os
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        path = os.path.join(os.path.dirname(__file__), 'empatio-site/index.html')
+        path = os.path.join(os.path.dirname(__file__), 'site/index.html')
         template_values = {
         }
         self.response.out.write(template.render(path, template_values))
 
-class TimHandler(webapp2.RequestHandler):
+class MainNLHandler(webapp2.RequestHandler):
     def get(self):
-        path = os.path.join(os.path.dirname(__file__), 'empatio-site/tim.html')
+        path = os.path.join(os.path.dirname(__file__), 'site/index-nl.html')
         template_values = {
         }
         self.response.out.write(template.render(path, template_values))
 
-class ArendHandler(webapp2.RequestHandler):
+class AboutHandler(webapp2.RequestHandler):
     def get(self):
-        path = os.path.join(os.path.dirname(__file__), 'empatio-site/arend.html')
+        path = os.path.join(os.path.dirname(__file__), 'site/about.html')
         template_values = {
         }
         self.response.out.write(template.render(path, template_values))
 
-class BumperHandler(webapp2.RequestHandler):
+class AboutNLHandler(webapp2.RequestHandler):
     def get(self):
-        path = os.path.join(os.path.dirname(__file__), 'empatio-site/bumper.html')
+        path = os.path.join(os.path.dirname(__file__), 'site/over.html')
         template_values = {
         }
         self.response.out.write(template.render(path, template_values))
 
 app = webapp2.WSGIApplication([
-    ('/', BumperHandler),
-    ('/dev', MainHandler),
-    ('/tim', TimHandler),
-    ('/arend', ArendHandler)
+    ('/', MainHandler),
+    ('/nl', MainNLHandler),
+    ('/about', AboutHandler),
+    ('/over', AboutNLHandler)
 ], debug=True)

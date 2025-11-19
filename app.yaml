@@ -1,40 +1,46 @@
-application: empatio-site
-version: 1
-runtime: python27
-api_version: 1
-threadsafe: yes
+runtime: python314
 
 handlers:
-- url: /favicon\.ico
-  static_files: favicon.ico
-  upload: site/static/images/favicon\.ico
+  - url: /
+    static_files: site/index.html
+    upload: site/index\.html
 
-- url: /static/css
-  static_dir: site/static/css
+  - url: /nl
+    static_files: site/index-nl.html
+    upload: site/index-nl\.html
 
-- url: /static/images
-  static_dir: site/static/images
+  - url: /about
+    static_files: site/about.html
+    upload: site/about\.html
 
-- url: /static/js
-  static_dir: site/static/js
+  - url: /over
+    static_files: site/over.html
+    upload: site/over\.html
 
-- url: /static/fonts
-  static_dir: site/static/fonts
+  - url: /favicon\.ico
+    static_files: favicon.ico
+    upload: site/static/images/favicon\.ico
 
-- url: /people
-  static_dir: site/people
+  - url: /static/css
+    static_dir: site/static/css
 
-- url: /mensen
-  static_dir: site/mensen
+  - url: /static/images
+    static_dir: site/static/images
 
-- url: /.*
-  script: main.app
+  - url: /static/js
+    static_dir: site/static/js
 
+  - url: /static/fonts
+    static_dir: site/static/fonts
 
-libraries:
-- name: webapp2
-  version: "2.5.2"
+  - url: /people
+    static_dir: site/people
 
-- name: jinja2
-  version: latest
+  - url: /people
+    static_dir: site/people
 
+  - url: /mensen
+    static_dir: site/mensen
+
+  - url: /.*
+    script: auto

@@ -1,2 +1,3 @@
 *.scssc
-/main.pyc
+venv
+*.pyc

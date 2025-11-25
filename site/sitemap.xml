@@ -1,53 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?> 
-<urlset xmlns="http://www.google.com/schemas/sitemap/0.84">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>/about.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
+        <loc>/about</loc>
     </url>
     <url>
-        <loc>/index-nl.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
+        <loc>/nl</loc>
     </url>
     <url>
-        <loc>/index.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
+        <loc>/</loc>
     </url>
     <url>
-        <loc>/over.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
+        <loc>/over</loc>
     </url>
     <url>
         <loc>/mensen/arend.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
     </url>
     <url>
         <loc>/mensen/niels.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
     </url>
     <url>
         <loc>/mensen/tim.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
     </url>
     <url>
         <loc>/people/arend.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
     </url>
     <url>
         <loc>/people/niels.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
     </url>
     <url>
         <loc>/people/tim.html</loc>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
     </url>
 </urlset>

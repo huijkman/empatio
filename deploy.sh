@@ -1,1 +1,1 @@
-gcloud --project empatio-site app deploy app.yaml
+gcloud --project empatio-site app deploy --stop-previous-version .

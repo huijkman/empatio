@@ -5,23 +5,23 @@ automatic_scaling:
 handlers:
   - url: /
     static_files: site/index.html
-    upload: site/index\.html
+    upload: site/index.html
 
   - url: /nl
     static_files: site/index-nl.html
-    upload: site/index-nl\.html
+    upload: site/index-nl.html
 
   - url: /about
     static_files: site/about.html
-    upload: site/about\.html
+    upload: site/about.html
 
   - url: /over
     static_files: site/over.html
-    upload: site/over\.html
+    upload: site/over.html
 
   - url: /favicon\.ico
-    static_files: favicon.ico
-    upload: site/static/images/favicon\.ico
+    static_files: site/static/images/favicon.ico
+    upload: site/static/images/favicon.ico
 
   - url: /static/css
     static_dir: site/static/css
